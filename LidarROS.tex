@@ -1,0 +1,118 @@
+\documentclass[10pt,draftclsnofoot,onecolumn,journal,compsoc]{IEEEtran}
+
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+
+
+\usepackage[margin=0.75in]{geometry}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage{imakeidx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{setspace}
+\singlespacing
+
+
+
+\lstset{
+  basicstyle=\small\ttfamily,
+ numbers=left,
+  numberstyle=\scriptsize,
+  showspaces=false,
+  showstringspaces=false,
+  breaklines=true
+}
+
+
+\title{LiDAR ROS }
+\author{
+	\IEEEauthorblockN{\large Prepared For:\\  D. Kevin McGrath } \\
+  \IEEEauthorblockN{\small By: \\ \large  Lucien Tamno} \\
+  \IEEEauthorblockA{CS 406: Winter 2018\\ Oregon State University}
+}
+\usepackage{datetime}
+\newdate{date}{30}{1}{2018}
+\date{\displaydate{date}}
+
+
+
+
+\IEEEtitleabstractindextext{
+
+ \begin{abstract}
+  This project is to build a new system that improves  LiDAR technology sensors output by overlaying both, the liDAR and the Webcam video  technologies. The Former achieving landmarks in the technological world when the latter in practice has been normalized and accepted in the market today.  
+ \end{abstract} 
+\centering \large	\displaydate{date} 
+
+}
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+ 
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+\newpage
+
+\section{Problem Statement}
+\subsection{Problem definition}
+For people familiar with LiDAR, there is no doubt that this technology helps to address issues found in some other technologies. For example, in automotive industry and for many years now self-driving cars have been using the technology to increase their surveying through laser sensors to perform a full three-dimensional mapping. On the other hand, people less versed may be curious about why the technology seems to be on many firms agenda today. The fact is that companies that want to use the LiDAR technology  are also ready to invest on it to make it work.LiDAR technology has many applications in different areas such as  agriculture, transport, forestry, meteorology.  
+
+Though the LiDAR technology was improved all these past years mostly when put together with other technologies, and even more in its recent solid-state version questions still remain onto how efficient certain of its parts may accomplish their task in the outdoor environment. As it often turns out that any defect found in such a technology would likely cause havoc in people lives and set firms economies in jeopardy. let think of it this way, if solid-state dept-sensors behave poorly in the outdoor environment in the case of self-driving cars, how many accidents would occur? For these reasons, the current project would like to address the issue of LiDAR's solid-state depth-sensors in outdoors environment. \par
+
+And to allow the reader of this document to better understand why this project was designed,in the following subsections, we expand  the LiDAR technological problem description by emphasizing on its solid-state version, what that version does the best and eventually what is wrong in it. afterwards, we  propose a sample solution could on how we can solve the issue found in solid-state.finally, we provide some performances metrics on how we may measure data collected from the new built system. 
+
+\subsection{Problem in depth description}
+
+Still, the question is to know how good this technology would likely synchronize itself with other streams of data to produce even better results. coming from a webcam feed and when we overlay both technologies how can we get  best results. As a proof of concept, to improve reliability in an outdoor environment, we propose to combine the high accuracy of LiDAR technology with the depth-sensor technology. To demonstrate this, we might combine LiDAR technology with the output of a webcam. \par 
+
+But before then, LiDAR stands for (Light Detection and Ranging) which is a scientific method of surveying by measuring objects distances using pulse laser light's beams. In doing so, the LiDAR technology maps the surrounding environment by detecting,locating and measuring actual distances of all nearby objects including liquids and even moving entities like people.And to do so, embedded device Sensors utilize some kind of three-dimensional high-resolution to scan the world around them. To get an idea of how efficient the technology works, is to say that "an aircraft can map terrain at 30-centimeter (12 in) resolution or better"[1].\par
+
+As we have mentioned above, many other sciences have been  using the technology for sometimes now as a remedy to some of the limits imposed by their system(s). For instance, in the case self-diving cars we can hardly imagine autonomous running cars without the LiDAR technology embedded in them. What the technology does in this case is to scan the road, help the automate system in the car to know its boundaries of the wheel-tracks while moving, to stop whenever there is an obstacle that suddenly shows up or stands on the vehicle path. All these possibilities are carried out via sensors that send and receive reflected data from objects all around, and then forward those data to the central unit system for analysis and decision taking. Or in another case scenario, the same technology helps a police department to better carry out traffic surveillance by allowing a cop to instantaneously capture the speed at which a motorist is driving. These two examples show how effective role the LiDAR technology plays in a day by day life.In the sample solution described hereafter, we attempt to respond to the question.\par
+ 
+.   
+
+
+\subsection{Proposed solution}
+Before considering a sample solution to this project, it is important to look first at some other successful existing solutions. Statistically speaking, the demand in LiDAR technology has been unceasingly diversified over years and reached tremendous progress in software and hardware services demands. Those progresses were made in  the  terrestrial, mobile and aerial sides of the technology. That is by no means to say that everything is done.\par
+
+Recent improvements made on the solid-state version can guarantee were able to secure several benefits. For example, the capture of the surrounding environment made by solid-state sensors which have been embedded on any device motherboard perform better distance measurements to objects because the solid-state parts are less mobile and that is, sensors are no longer spinning to getting tiny marginal errors measurements due to their mobility. \par
+
+That said, one of the sample solutions (software) for this project could be to use a solid-state LiDAR stream and to input it to webcam's video feed to be displayed so that we can describe what best the LiDAR technology does but also, how to use this new system for future applications. Because we know for sure that, webcams  have become ubiquitous devices nowadays and used for multipurpose. \par
+
+ Similarly, our sample solution in image may look like the 'LiDAR SENSOR FUNDAMENTALS'[2] image. However, we have to keep in mind that to be scientifically acceptable our project has to meet 'SMART' goal requirements. That means the  project has to be specific in its lifespan, with   measurable outcomes, assigned to study  interactions between the LiDAR and the video webcam technologies, and to be  realistic or feasible within the time frame  defined by capstone project global policy.  
+
+
+
+\subsection{Performances Metrics}
+Indeed, there are many ways we can integrate the liDAR technology stream to the webcam's video feed. And Of course, to test the new system so that we can judge how good or bad it outputs positive results. One of the samples would be to use the system in the ideal conditions, collect outcomes and analyze them, and then use other empirical measurements to see how accurate the system was able to measure the distance. In other drastic conditions, like placing the system into a dark environment and see how good our system will detect any target object and for how long. All these to see how well the solid-state system and the webcam would get along. \par
+Other than detecting, locating as well as measuring, other goals in this project could be to spot out new functions that may come out from the new built system. 
+\\[20ex]
+
+
+
+
+\noindent\begin{tabular}{ll}
+\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
+Name & Date\\[8ex]%
+\end{tabular}
+\newpage
+
+
+\section{References}
+[1]NOAA Coastal Services Center,"Lidar 101 : An Introduction to Lidar Technology, Data, and Applications", November 2012, pp 3,
+\texttt{ \detokenize{https://coast.noaa.gov/data/digitalcoast/pdf/lidar-101.pdf}}
+
+[2] Leddar Tech,"LIDAR SENSOR FUNDAMENTALS",1-27-2018 at 10:06 [last access].\\
+\texttt{ \detokenize{https://leddartech.com/technology-fundamentals/}}
+
+\end{document}

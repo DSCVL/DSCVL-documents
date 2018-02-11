@@ -1,10 +1,10 @@
-## Oregon State University Senior Capstone - Lydar overlay on web cam 
+# Oregon State University Senior Capstone - Lydar overlay on web cam 
 
-# Dependencies
+## Dependencies
 	- OpenCV 3.4.0
 	- Python 2.7.12
 	- rplidar
 
-# Hardware Requirements
+## Hardware Requirements
 	- Logitech Brio Web cam
 	- Rplidar A1

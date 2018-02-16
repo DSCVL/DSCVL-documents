@@ -2,7 +2,7 @@
 
 ## Dependencies
 	- OpenCV 3.4.0
-	- Python 2.7.12
+	- Python 3.x.x
 	- rplidar
 
 ## Hardware Requirements

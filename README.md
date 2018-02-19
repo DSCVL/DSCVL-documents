@@ -8,3 +8,6 @@
 ## Hardware Requirements
 	- Logitech Brio Web cam
 	- Rplidar A1
+
+## References
+	- https://github.com/opencv/opencv/tree/master/data/lbpcascades

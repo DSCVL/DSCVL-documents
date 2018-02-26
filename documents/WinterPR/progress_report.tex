@@ -133,7 +133,7 @@
 			This involves using the RPLidar's library to get depth sensing information, and using computer vision to recognize objects.
 			
 			\begin{figure}[here]
-				\includegraphics[scale=0.5, width=\textwidth]{different_dimensions.PNG}
+				\includegraphics[scale=0.5]{different_dimensions.PNG}
 				\captionof{figure}{Visualizing different dimensions measured by the RPLidar and Brio Webcam.}
 				\label{dimensions}
 			\end{figure}
@@ -145,7 +145,7 @@
 			The transparent teal pyramid represents the Brio webcam's field-of-view.
 			
 			\begin{figure}[here]
-				\includegraphics[scale=0.55]{expo.PNG}
+				\includegraphics[scale=0.5]{expo.PNG}
 				\captionof{figure}{Expo/final design concept}
 				\label{expo}
 			\end{figure}
@@ -162,7 +162,7 @@
 			If a person is identified and the RPLidar A1 detects an object is within the camera's field of view, the software shall overlay distance 
 
 			\begin{figure}[here]
-				\includegraphics[scale=0.5, width=\textwidth]{overlay_design.png}
+				\includegraphics[scale=0.4]{overlay_design.png}
 				\captionof{figure}{Distance overlay concept}
 				\label{overlay}
 			\end{figure}
@@ -175,7 +175,7 @@
 			This program is written in Python 3 and uses OpenCV 3.4.0. \cite{opencv}
 
 			\begin{figure}[here]
-				\includegraphics[scale=0.4, width=\textwidth]{lam_SVM_progess.png}
+				\includegraphics[scale=0.3]{lam_SVM_progess.png}
 				\captionof{figure}{Face detection demonstration using a pre-trained SVM. The green box is recognized as a face.}
 				\label{svm}
 			\end{figure}
@@ -186,7 +186,7 @@
 			After my colleague Lucian completes his research into extracting depth sensing information from the RPLidar, I shall assist him in calibrating the software to only perform depth measurements within the webcam's field of view.
 
 
-	\section{Lucien Armand Tamdja Tamno}
+	\subsection{Lucien Armand Tamdja Tamno}
 	
 		\subsubsection{Introduction}
 			This part of the process report primarily explain the various steps we took  to write the Graphical user Interface as well as the backend function that allows someone to get frames from an input stream video from a camera to store  images on a file. So,  In the following sections, we first define the purpose of the graphical interface built, and then, we extend the definition by showing how that GUI  was implemented, tools used to reach that implementation  and subsequently talk about one of the function that would be run when the interface is properly run. Finally, we conclude by mentioning problems encountered during the current progress. 
@@ -201,7 +201,7 @@
 So using this library, we were able to  display the following interface.
 
 			\begin{figure}[here]
-				\includegraphics[scale=0.4, width=\textwidth]{userinterface.png}
+				\includegraphics[scale=0.4, width=\textwidth]{userinterface.PNG}
 				\captionof{figure}{sample  GUI for the depth sensing with computer vision and Lidar.}
 				\label{gui}
 			\end{figure}
@@ -217,30 +217,18 @@ So using this library, we were able to  display the following interface.
 		Therefore, the first  we did was to install the OpenCv library in windows environment to which we added another python library called numpy.   From these two libraries, we were able to perform basic tasks but more than that was still needed. The next step was to include to this package other tools  like the  “ glob” [2] library and some C++ functions namely the power and the square functions that we  imported from this website [3]. As a result,The following  snippet code script was written.
 
 			\begin{figure}[here]
-				\includegraphics[scale=0.4, width=\textwidth]{videocapture.png}
+				\includegraphics[scale=0.4, width=\textwidth]{videocapture.PNG}
 				\captionof{figure}{ video-captured code.}
 				\label{videocapture}
 			\end{figure}
 			
 	In Spite of the current level of project progress but  to reach the final expected goal which is to overlay two images from two different sources ( camera and lidar device), we still have some work to do. Yet, even at this stage of project there is already barriers to hinder its good progress and  proper implementation. 
-
+	\cite{guiprogramming}
+	\cite{python}
+	\cite{cplusplus}
 		\section{Problems}
 		This project and group was formed during Week 3. While the scale and purpose of this project is clear, a lot of work is necessary to construct an alpha-level demo. And among other problems, it still unclear what technique works, for us to run the RPLidar on Windows environment. Just because we want to test certains RPlidar functions on windows in order to use the full library in one end and in the other,our software should not be limited to any particular host environment ( Windows, MacOS or Linux ). Its  flexibility has to be experimented across platforms to make sure that wherever the software is used, it will provide the same outcome.
 
-
-
-		\section{References}
 		
-		
-		[1]: https://wiki.python.org/moin/GuiProgramming
-		[2]: https://docs.python.org/2/library/glob.html
-		[3]: http://www.cplusplus.com/reference/cmath/pow/
-
-		
-				
-
-		
-	
-	
 \end{singlespace}
 \end{document}

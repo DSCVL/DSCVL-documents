@@ -17,7 +17,7 @@ pdf: $(PDF)
 
 ps: $(PSF)
 
-$(TRG): %.dvi: %.tex *.bib $(EXAMPLES) *.sty
+$(TRG): %.dvi: %.tex *.bib $(EXAMPLES)
 	$(LATEX) $<
 	$(BIBTEX) $(<:%.tex=%)
 	$(LATEX) $<

@@ -106,7 +106,12 @@
 		
 		\subsection{GUI}\label{def:gui}
 		GUI: Graphical User Interface
-
+		
+		\subsection{Videocapture}\label{def:videocapture}
+		videocapture: Stream of subsequent images
+		
+		
+		
 	\section{Project Purpose}
 		Commercial infrared-based depth sensors such as the model used in Microsoft's Kinect can quickly calculate distances in indoor scenarios.
 		However, IR depth sensors can be confused by other infrared emitters such as other IR depth sensors or natural sunlight.
@@ -182,5 +187,60 @@
 
 
 	\section{Lucien Armand Tamdja Tamno}
+	
+		\subsubsection{Introduction}
+			This part of the process report primarily explain the various steps we took  to write the Graphical user Interface as well as the backend function that allows someone to get frames from an input stream video from a camera to store  images on a file. So,  In the following sections, we first define the purpose of the graphical interface built, and then, we extend the definition by showing how that GUI  was implemented, tools used to reach that implementation  and subsequently talk about one of the function that would be run when the interface is properly run. Finally, we conclude by mentioning problems encountered during the current progress. 
+		
+		\subsubsection{Purpose and goal of the GUI}	
+			The GUI of this project is to primarily address its client needs and its existence is  to easily allow our client to enter information in a friendly way in order to get intended outcomes. Not only limited to be used by its client, the program can be exploited by anyone who is  either interested to use its results or to merely understand how the program works. The  interaction happening between a user and the program has to be friendly as possible and that is the goal of our GUI.
+
+	However, if the GUI is used by anyone who can read between lines, that is doesn’t mean the interface alone does the whole job. In other words, we want to say that behind what the user sees there is other functions that are being run in order for the user to get what he or she will see on a screen.
+	
+		\subsubsection{ Python GUI and  Video capturing function}
+			Tools used to build the GUI interface were first the current version of python package namely python 3.6 to which we combine with a GUI programming library  called the “ appJar “ [1] library. It  turns out this latter library only works well with the former python version due to certain common functionalities found in both, but also to note that the appJar was recently upgraded for the its users to get benefits of all advanced features it can offer like easy interaction with functions run on any  Windows, MacOS or Linux platform.  
+So using this library, we were able to  display the following interface.
+
+			\begin{figure}[here]
+				\includegraphics[scale=0.4, width=\textwidth]{userinterface.png}
+				\captionof{figure}{sample  GUI for the depth sensing with computer vision and Lidar.}
+				\label{gui}
+			\end{figure}
+			
+		\subsubsection{ Python GUI }
+				
+			
+			Though  we have to admit the fact that this above interface is not the final user interface for this project and also does not have enough documentation for us to write certain required functions like the function that should allow a user to click on the “submit button” and gets the program  perform certain  backend task like the video capturing of which we provide further details hereafter.
+			
+			\subsubsection{ Video-captured function  }
+				The video capturing function processes an input stream of data to be outputted as  images  to in a given file. However to see this function at work, we needed several python libraries to come together.
+		
+		Therefore, the first  we did was to install the OpenCv library in windows environment to which we added another python library called numpy.   From these two libraries, we were able to perform basic tasks but more than that was still needed. The next step was to include to this package other tools  like the  “ glob” [2] library and some C++ functions namely the power and the square functions that we  imported from this website [3]. As a result,The following  snippet code script was written.
+
+			\begin{figure}[here]
+				\includegraphics[scale=0.4, width=\textwidth]{videocapture.png}
+				\captionof{figure}{ video-captured code.}
+				\label{videocapture}
+			\end{figure}
+			
+	In Spite of the current level of project progress but  to reach the final expected goal which is to overlay two images from two different sources ( camera and lidar device), we still have some work to do. Yet, even at this stage of project there is already barriers to hinder its good progress and  proper implementation. 
+
+		\section{Problems}
+		This project and group was formed during Week 3. While the scale and purpose of this project is clear, a lot of work is necessary to construct an alpha-level demo. And among other problems, it still unclear what technique works, for us to run the RPLidar on Windows environment. Just because we want to test certains RPlidar functions on windows in order to use the full library in one end and in the other,our software should not be limited to any particular host environment ( Windows, MacOS or Linux ). Its  flexibility has to be experimented across platforms to make sure that wherever the software is used, it will provide the same outcome.
+
+
+
+		\section{References}
+		
+		
+		[1]: https://wiki.python.org/moin/GuiProgramming
+		[2]: https://docs.python.org/2/library/glob.html
+		[3]: http://www.cplusplus.com/reference/cmath/pow/
+
+		
+				
+
+		
+	
+	
 \end{singlespace}
 \end{document}

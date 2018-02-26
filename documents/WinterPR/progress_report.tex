@@ -7,6 +7,7 @@
 \usepackage{listings}
 \usepackage{cite}
 \usepackage{geometry}
+\usepackage{caption}
 
 \geometry{textheight=9.5in, textwidth=7in}
 
@@ -103,25 +104,43 @@
 			Combining the functionality of both devices to get accurate three-dimensional depth sensing presents a unique engineering challenge.
 			This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
 			This involves using the RPLIDAR’s library to get depth sensing information, and using computer vision to recognize objects.
+			
+			\begin{figure}[h!]
+				\includegraphics[scale=0.5, width=\textwidth]{different_dimensions.PNG}
+				\label{dimensions}
+				\captionof{figure}{Visualizing different dimensions measured by RPLIDAR and Brio Webcam.}
+			\end{figure}
 
-			In XXX, the red cube represents the Logitech Brio webcam and RPLIDAR device secured in stationary positions.
+			In \ref{dimensions}, the red cube represents the Logitech Brio webcam and RPLIDAR device secured in stationary positions.
 			The flat purple triangle represents the RPLIDAR’s horizontal range detection.
 			The transparent green rectangle in front of the person represents the computer vision model recognizing that there is a person in-front of the sensor.
 			The transparent teal pyramid represents the Brio webcam’s field-of-view.
 			
-			FIGXXX illustrates the project’s final expo design.
+			\begin{figure}[h!]
+				\includegraphics[scale=0.55]{expo.PNG}
+				\label{fig:expo}
+				\captionof{figure}{Expo/final design concept}
+			\end{figure}
+
+			\ref{fig:expo} illustrates the project’s final expo design.
 			This render depicts the Brio webcam and RPLIDAR A1 in fixed positions.
 			The software shall be capable of displaying the video output of the webcam with object distance information overlaid.
 			The Brio webcam serves to provide subject identification and a point of reference in the vertical axis.
 			The RPLIDAR A1 serves to provide distance measurement in the horizontal plane.
-			As illustrated in FigXXX, the horizontal range of the RPLIDAR A1 extends beyond the Brio webcam’s field of view.
+			As illustrated in \ref{fig:dimensions}, the horizontal range of the RPLIDAR A1 extends beyond the Brio webcam’s field of view.
 			This requires software adjustments such that the RPLIDAR A1’s data is restricted to only collecting data within the camera’s FOV.
 			Fixing both devices in stationary positions simplifies this task.
 			Once relevant distance information can be parsed, the software shall then use computer vision to recognize contiguous objects such as people.
 			If a person is identified and the RPLIDAR A1 detects an object is within the camera’s field of view, the software shall overlay distance 
-		
+
+			\begin{figure}[h!]
+				\includegraphics[scale=0.5, width=\textwidth]{overlay_design.png}
+				\label{fig:overlay}
+				\captionof{figure}{Distance overlay concept}
+			\end{figure}
+
 		\subsubsection{Computer Vision}
-			FIGXXX illustrates my current progress towards creating an accurate computer vision model.
+			\ref{fig:overlay} illustrates my current progress towards creating an accurate computer vision model.
 			I am modifying a pre-trained SVM to recognize faces.
 			The SVM can recognize faces in various lighting conditions even if the subject is wearing hats or glasses.
 			This algorithm is not completely reliable or accurate, if the subject turns their face away from the camera or is looking off-center, the model will fail to recognize their face.

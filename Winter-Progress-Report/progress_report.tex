@@ -1,0 +1,134 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\hbadness=1000 % suppress warnings
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{caption}
+
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{			}
+\def \CapstoneTeamNumber{		69}
+\def \GroupMemberOne{			Kin-Ho Lam}
+\def \GroupMemberTwo{			Lucien Armand Tamdja Tamno}
+\def \CapstoneProjectName{		Depth Sensing using Computer Vision and Lidar}
+\def \CapstoneSponsorCompany{	Oregon State University}
+\def \CapstoneSponsorPerson{	D. Kevin McGrath}
+
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{		%Problem Statement
+	%Requirements Document
+	%Technology Review
+	%Design Document
+	Winter Midterm Progress Report
+}
+
+\newcommand{\NameSigPair}[1]{\par
+	\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+	\par\vspace{-12pt} \textit{\tiny\noindent
+		\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{images/}}
+\begin{document}
+	\begin{titlepage}
+		\pagenumbering{gobble}
+		\begin{singlespace}
+			\centering
+			\includegraphics[height=4cm,natwidth=345,natheight=435]{images/osu_logo.png}
+			\hfill 
+			% 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+			%\includegraphics[height=4cm]{CompanyLogo}   
+			\par\vspace{.2in}
+			\centering
+			\scshape{
+				\huge Senior Design Capstone \DocType \par
+				{\large\today}\par
+				\vspace{.5in}
+				\textbf{\Huge\CapstoneProjectName}\par
+				\vfill
+				{\large Prepared for}\par
+				\Huge \CapstoneSponsorCompany\par
+				\vspace{5pt}
+				{\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+				{\large Prepared by }\par
+				Group\CapstoneTeamNumber\par
+				% 5. comment out the line below this one if you do not wish to name your team
+				\CapstoneTeamName\par 
+				\vspace{5pt}
+				{\large
+					\NameSigPair{\GroupMemberOne}\par
+					\NameSigPair{\GroupMemberTwo}\par
+				}
+				\vspace{20pt}
+			}
+			\begin{abstract}  
+ 				Depth Sensing with Computer Vision and LIDAR proposes combining computer vision and LIDAR to create a reliable depth sensor.
+				This document details its project member's progress toward a final design, and future milestones.
+			\end{abstract}     
+		\end{singlespace}
+	\end{titlepage}
+\section{Table of Contents}
+\tableofcontents
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+\clearpage
+
+\begin{singlespace}
+	\section{Definitions}
+		\subsection{IR}\label{def:IR}
+		IR refers to the infrared light spectrum.
+
+		\subsection{IR Depth Sensor}\label{def:depthsensor}
+		A device that calculates distances by emitting infrared patterns. 
+		
+		\subsection{LIDAR}\label{def:lidar}
+		Light Detection And Ranging - A method that uses lasers to measure distance
+		
+		\subsection{Microsoft Kinect}\label{def:kinect}
+		A product that uses an IR Depth sensor to measure distances.
+		
+		\subsection{Logitech Brio Webcam}\label{def:brio}
+		The webcam model this project shall be using.
+		
+		\subsection{RPLidar A1}\label{def:rplidar}
+		A low-cost LIDAR unit that this project shall be using.
+		
+		\subsection{Computer Vision }\label{def:vision}
+		The methods for acquiring, processing, analyzing, and classifying digital images and extracting information.
+		
+		\subsection{GUI}\label{def:gui}
+		GUI: Graphical User Interface
+		
+		\subsection{Videocapture}\label{def:videocapture}
+		videocapture: Stream of subsequent images
+		
+		
+		
+	\section{Project Purpose}
+		Commercial infrared-based depth sensors such as the model used in Microsoft's Kinect can quickly calculate distances in indoor scenarios.
+		However, IR depth sensors can be confused by other infrared emitters such as other IR depth sensors or natural sunlight.
+		For these reasons, IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy and reliable distance calculation.
+
+		Depth Sensing with Computer Vision and LIDAR proposes combining the power of computer vision with the reliability of LIDAR technology.
+		LIDAR uses a pulsing laser to measure relative distance.
+		The LIDAR unit we're going to be using is called the RPLidar A1.
+		We'll be combining this with a high-end Logitech Brio webcam.
+
+	\section{Current State}
+
+	\subsection{Kin-Ho Lam}
+		
+	\subsection{Lucien Armand Tamdja Tamno}
+	
+	\subsection{Problems}
+		
+\end{singlespace}
+\end{document}

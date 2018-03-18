@@ -14,7 +14,7 @@
 \def \CapstoneTeamName{			}
 \def \CapstoneTeamNumber{		69}
 \def \GroupMemberOne{			Kin-Ho Lam}
-\def \CapstoneProjectName{		Depth Sensing using Computer Vision and Lidar}
+\def \CapstoneProjectName{		Depth Sensing with Computer Vision and Lidar}
 \def \CapstoneSponsorCompany{	Oregon State University}
 \def \CapstoneSponsorPerson{	D. Kevin McGrath}
 
@@ -105,7 +105,6 @@
 		The methods for acquiring, processing, analyzing, and classifying digital images and extracting information.
 
 		
-		
 	\section{Project Purpose}
 		Commercial infrared-based depth sensors such as the model used in Microsoft's Kinect can quickly calculate distances in indoor scenarios.
 		However, IR depth sensors can be confused by other infrared emitters such as other IR depth sensors or natural sunlight.
@@ -128,80 +127,156 @@
 	\subsection{Progress}
 
 
-		\subsubsection{Computer Vision Object Recognition}
+		\subsubsection{Computer Vision}
+			
 
+\clearpage
 
 	\subsection{Ten-Week Term Retrospective}
 		\begin{longtable}{|l|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}\hline \textbf{Week} & \textbf{Positives} & \textbf{Deltas} & \textbf{Actions}\\\hline
-		1 	& - & - & -\\\hline
+		1 	&
+			-
+			&
+				Kim says we're moving too slowly compared to previous teams
+				In my opinion making a website is a far simpler task than writing code that performs analysis  and aggregates data in a system that is unproven and has never been done before
+
+				Kim don't want us to work on filtering acceptable images even through that is what we stated we would do in our problem statement
+				All problem statement drafts focused on filtering acceptable images
+				None of our problem statements alluded to focusing on image analysis to interpret aerosol content
+			&
+				OUR TWO OPTIONS PRESENTED TO US:
+				1) Kim wants us to focus on a system to interpret aerosol content in the atmosphere based on images of the horizon, EXIF data from those images, and data from wunderground
+				2) (In her view) continue on this image filtering path we have started, overall this current project goal of a filter is not applicable to Aerolyzer
+
+				I believe we have not gone astray. What I have written is relevant in either option.
+				I still believe we can accomplish 1). 
+
+				Seems like she gave up on us
+				(in my opinion) we are a lower priority given our pace and low confidence in our abilities
+				The code I wrote is still relevant. It will still pick out the sky which is still very necessary, it will still need to be used no matter the option we choose.
+
+				I am the only one on Github discussing anything about the project.
+				Neither Logan or Daniel have communicated to me that the direction we were going was wrong
+				I don't think Kim understands the scope of the code that is necessary for a filter or why a filter is necessary
+				I don't think she is reading what I'm documenting on our github or how my code is used.
+
+			\\\hline
 
 		2 	&
+			Meeting with kevin over webex last Friday transcribed notes
+
+			May or may not have a partner
+
+			Usable up to 50 meters, 450 spread
+			Take feed from normal webcam and overlay Leddar point cloud on video
+			With minimum range and maximum range
+			Device: Leddar Lydar M16
+			Webcam: Logitech Brio webcam
+
+			Most depth cameras don't work well outdoors, light sensors are overwhelmed by ambient light, overlaying point cloud on webcam video may be a way to resolve this problem
 
 			&
-
+			-
 			&
+			Research Leddar Lydar M16.
+			2D Lydar unit, see if I can overlay point cloud on webcam image.
+			Ideas to try:
+			Research dept/distance sensing fpr 
 
 			\\\hline
 
 		3	&
+			Talked with Lucian over email
+			Unfortunately this time won't work for him, I want to keep this slot so we can at least talk, I'll leave it to him to find time to talk with you
+			Gave him a quick rundown of what I understood the project to be
 
+			He mentioned he was going to write up a problem statement and design document. 
+			
 			&
-
+			Not sure exactly how to help Lucian writing the documents.
 			&
+			Don't need ROS (Robot operating system, don't need to use it)
 
+			Camera depth sensor doesn’t work in sunlight, accompany with LIDAR unit
+
+			Use realsense as point of comparison
 			\\\hline
 
 		4	&
-
+			Borrowed Logitech brio from Kevin
+			Got it working with VLC on Windows 10, set it as capture device.
 			&
-
+			Alpha stage of project = visually complete interface 
+			Responsive code with placeholders for functionality
 			&
-
+			Experimenting with Brio webcam and opencv vision models.
 			\\\hline
 
 		5 	&
+			Interface design?
 
+			Suggestion: To start, draw red dot on video feed and output
+			Construct internal pipeline first
 			&
-
+			Lucian and Kevin met in person for our weekly meeting, did not answer webex call so I'm not sure what they discussed.
 			&
-
+			Sent Kevin my update + screenshots and sketches of my proposed design.
 			\\\hline
 
 		6	&
-
+			Created opencv python script to overlay green box on webcam video feed
+			Successfully overlaid pixels on camera output
+			Output is stuck on 4:3 resolution, going to work with it now and write code to be scalable, I want to increase ratio to 16:9 sometime, see if it's because I'm running on Linux, try with Lucian's computer later today
 			&
-
+			So the algorithmic dilemma I'm struggling with:
+			We want to transfer what the lydar detects in physical 3 dimensional space into a 2D representation overlaid on a video.
+			Let this white bar I've drawn here represent an offset in the y dimension (2D space in video) and z dimension (3D physical space).
+			As we move our point of interest to specified distances, this angle needs to remain constant and our y/z offset needs to grow or shrink accordingly.
+			This means our camera and lydar need to be stationary to define some constant angle, once that is done we can just apply some pretty simple math.
 			&
-
+			Experiment with background subtraction and opencv SVM to capture human faces.
 			\\\hline
 
 		7	&
-
+			Lucian was talking about using some kind of equation in opencv to get distance, I think we need to get a better illustration to see how Kevin envisions us connecting the webcam feed to the data from the lydar
 			&
-
+			Sometimes I'm not sure what Lucian means.
 			&
-
+			Per my conversation with Kevin, I successfully used a trained SVM cascading front-face model to detect faces, not extremely accurate right now, thinking about using this to get face detection
+			https://github.com/zeusees/FaceBoxes
+			Specifically, this is needed because the Lydar will capture objects in an X-Y plane, we need the face detection to have some frame of reference in the Z direction.
+			Our midterm progress report due date got pushed back, I drafted and finalized a few sections.
+			Lucian wrote the other half.
 			\\\hline
 
 		8	&
-
+			Accidently missed our poster critique session, we're going to attend the extra credit session for credit.
 			&
-
+			-
 			&
+			Successfuly implimented a pre-trained Tensorflow object detection model.
+			This detects full or partial bodies with very high accuracy.
+			After minimal tuning, the machine learning part is effectively done.
 			\\\hline
 
 		9	&
-
+			Poster Critique session had the following suggestions: Make sure correct poster format, put figure and captions, put x-y-z scale on main image, change layout, "visually connecting" layout to have presentation flow
+			Doesn’t need period at tagline
+			Include contact
+			Include Client
 			&
-
+			-
 			&
-
+			Made adjustments to poster design.
 			\\\hline
 
 		10	&
-
+			Dead week, we're busy writing the Winter report.
 			&
-
+			Lucian accidentally wiped the contents and history of our documents repo.
+			Fortunatly I had it cloned on my laptop so nothing was lost.
+			&
+			Need to discuss work schedule with Kevin and Lucian.
 			\\\hline
 		\end{longtable}
 	
@@ -214,6 +289,8 @@
 		Where others may attribute their failures to others or blame external influences, Lucian displays level-headed and long-term thinking that will benefit him in his professional career.
 		While we sometimes struggle with a small language barrier, I am certain this won't be an issue as we learn each other's mannerisms.
 		I believe we have a lot to teach each other, and I look forward to our final term as we build this project to reflect our best efforts.
+
+	\subsection{Conclusion}
 		
 \end{singlespace}
 \end{document}

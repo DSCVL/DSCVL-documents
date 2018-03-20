@@ -11,7 +11,7 @@ TRG	= $(SRC:%.tex=%.dvi)
 PSF	= $(SRC:%.tex=%.ps)
 PDF	= $(SRC:%.tex=%.pdf)
 
-default: full
+default: all
 
 pdf: $(PDF)
 
@@ -27,7 +27,7 @@ $(PSF):%.ps: %.dvi
 	$(DVIPS) -R -Poutline -t letter $< -o $@
 
 $(PDF): %.pdf: %.ps
-	ps2pdf $<
+	ps2pdf $< 
 
 show: $(TRG)
 	@for i in $(TRG) ; do $(XDVI) $$i & done
@@ -35,9 +35,8 @@ show: $(TRG)
 showps: $(PSF)
 	@for i in $(PSF) ; do $(GH) $$i & done
 
-all: pdf
 	
-full: pdf
+all: pdf
 	rm -f *.ps *.dvi *.out *.log *.aux *.bbl *.blg *.pyg *.toc
 
 clean:

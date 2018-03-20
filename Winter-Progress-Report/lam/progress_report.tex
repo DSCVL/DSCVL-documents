@@ -135,8 +135,14 @@
 			Additionally, calculations are very CPU-intensive, resulting in low frame-rate and resolution.
 			
 
-			Recognizing the SVM's weaknesses, I started experimenting with Tensorflow's open source Object detection model. 
-			Using a pre-trained Tensorflow model, our project is now able to accurately outline and label over 90 subjects as they come into view of the webcam.
+			Recognizing the SVM's weaknesses, I started experimenting with Tensorflow's open source object detection classifier. \cite{tensorflow}
+			Unsurprisingly, Tensorflow's powerful network is several magnitudes more accurate than OpenCV's static SVM.
+			\begin{figure}[here]
+			\includegraphics[scale=0.5, width=\textwidth]{tensorflow.PNG}
+			\captionof{figure}{Tensorflow pre-trained model can detect multiple subjects.}
+			\label{tf-detect}
+			\end{figure}
+			Using this pre-trained Tensorflow model, our project is now able to accurately outline and label over 90 subjects as they come into view of the webcam.
 			
 	\section{Partner Evaluation}
 		My partner, Lucian Tamno, displays excellent work ethic, enthusiasm, dedication to our project, and an absolute commitment to do his best.

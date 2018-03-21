@@ -109,7 +109,7 @@
 	\section{Project Purpose}
 		Infrared (IR) depth sensors such as the model used in Microsoft's Kinect \ref{def:kinect} can quickly calculate distances in indoor scenarios.
 		However, IR depth sensors can be confused by other infrared emitting sources such as other IR depth sensors or natural sunlight.
-		For these reasons, IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy in varying conditions.
+		For these reasons, IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy distance measurement in varying conditions.
 		Depth Sensing with Computer Vision and Lidar proposes combining computer-vision image classification with lidar to create a robust and reliable depth sensor.
 
 	\section{Current State}
@@ -118,8 +118,8 @@
 			The Logitech Brio webcam provides a high-resolution, two-dimensional image but lacks depth perception.
 			The LEDDAR M16 provides accurate depth measurement in a horizontal dimension but lacks vertical perspective beyond a 40-degree spread.
 			This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
-			This involves using the M16 Lidar to get depth sensing information, and using computer vision to recognize objects.
-			
+			This involves using the M16 Lidar to get depth sensing information and using computer vision to recognize objects.			
+
 
 			Figure \ref{dimensions} illustrates different dimensions measured by the M16 Lidar and Brio Webcam.
 			The red cube represents the Logitech Brio webcam and M16 Lidar secured in stationary positions.
@@ -156,7 +156,7 @@
 
 			Recognizing the SVM's weaknesses, Tensorflow's open source object detection classifier presented a better computer-vision alternative. \cite{tensorflow}
 			The Tensorflow object recognition library is better suited for this project because its library has already been trained to recognize a large dataset of objects. \cite{convolutional_object_detectors}
-			This pre-trained datasets in the Tensorflow library are sourced from other machine learning datasets including the COCO dataset, Kitti dataset, and the Open Images dataset. \cite{coco} \cite{open_images} \cite{kitti}
+			These pre-trained datasets in Tensorflow's library are sourced from other machine learning datasets including the COCO dataset, Kitti dataset, and the Open Images dataset. \cite{coco} \cite{open_images} \cite{kitti}
 
 
 			\begin{figure}[H]
@@ -172,14 +172,14 @@
 
 
 			Tensorflow also enables us to take advantage of NVIDIA CUDA, a driver that moves intensive calculations to the GPU.
-			While this increases our list of material requisitions for our physical expo demo, moving calculations to the GPU increases the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
+			While this increases our list of material requisitions for our physical expo demo, moving calculations to the GPU greatly improves the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
 			
 	\section{Group Evaluation}
 		My partner, Lucian Tamno, displays excellent work ethic, enthusiasm, dedication to our project, and an absolute commitment to do his best.
 		While my focus has been on the computer-vision component, Lucian has been hard at work researching and understanding the math and APIs behind the lidar systems we will be implementing.
 		I believe Lucian has put more effort into this project than me.
 		I am very proud of my partner's performance, and I am confident we can achieve our project goals despite our late project start.
-		Lucian's professional demeanor sets him apart and above many of our peers, as he is able to self-assign tasks and quickly comprehend technical concepts.
+		Lucian's professional demeanor sets him apart and above many of our peers, as he can self-assign tasks and quickly comprehend technical concepts.
 		I believe our individual experiences in professional working environments facilitates our team chemistry and communication.
 		It is extremely refreshing to witness my project partner assume responsibilities and take ownership of his role.
 		Where others may attribute their failures to others or blame external influences, Lucian displays level-headed and long-term thinking that will benefit him in his professional career.

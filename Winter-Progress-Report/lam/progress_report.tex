@@ -90,10 +90,10 @@
 		
 		\subsection{Microsoft Kinect}\label{def:kinect}
 		A product that uses an IR Depth sensor to measure distances.
-		Referred to as a benchmark comparison for the purpose of this project.
+		Referred as a benchmark.
 		
 		\subsection{Logitech Brio Webcam}\label{def:brio}
-		Web-cam used for this project made by Logitech. \cite{logitech}
+		Web-cam made by Logitech. \cite{logitech}
 		
 		\subsection{RPLidar A1}\label{def:rplidar}
 		A budget lidar device made by Slamtec. \cite{slamtec}
@@ -106,42 +106,63 @@
 
 		
 	\section{Project Purpose}
-		Commercial infrared-based depth sensors such as the model used in Microsoft's Kinect can quickly calculate distances in indoor scenarios.
-		However, IR depth sensors can be confused by other infrared emitters such as other IR depth sensors or natural sunlight.
+		Infrared (IR) depth sensors such as the model used in Microsoft's Kinect \ref{def:kinect} can quickly calculate distances in indoor scenarios.
+		However, IR depth sensors can be confused by other infrared emitting sources such as other IR depth sensors or natural sunlight.
 		For these reasons, IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy in varying conditions.
-
-
 		Depth Sensing with Computer Vision and lidar proposes combining the power of computer vision with the reliability of lidar technology.
-		Instead of strobing IR beams, lidar uses a pulsing laser to measure relative distance.
-		The Leddar M16 is a high-end solid-state lidar that can acquire distance data without the use of moving parts. (\ref{def:m16})
-		We'll be combining this with a high-end Logitech Brio Webcam. (\ref{def:brio})
-		This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
-		The completed project shall present a conglomeration of computer-vision based object recognition married to the high-accuracy of lidar.
-		This involves using the RPLidar's library to get depth sensing information, and using computer vision to recognize objects.
 
 	\section{Current State}
-		\subsection{Computer Vision}
-			My primary focus this term was creating a reliable image-recognition model.
-			I first started with OpenCV's pre-trained facial/pedestrian SVM classifier.
+
+		\subsubsection{Proposed Design}
+			The Logitech Brio webcam provides two-dimensional image but lacks depth perception.
+			The LEDDAR M16 provides accurate depth measurement in a horizontal dimension but lacks vertical depth sensing beyond a 40-degree spread.
+			This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
+			This involves using the RPLidar's library to get depth sensing information, and using computer vision to recognize objects.
+			
 			\begin{figure}[here]
-			\includegraphics[scale=0.5, width=\textwidth]{svm.PNG}
+				\includegraphics[scale=0.5]{different_dimensions.PNG}
+				\captionof{figure}{Visualizing different dimensions measured by the M16 Lidar and Brio Webcam.}
+				\label{dimensions}
+			\end{figure}
+
+			Figure \ref{dimensions} illustrates different dimensions measured by the M16 Lidar and Brio Webcam.
+			The red cube represents the Logitech Brio webcam and RPLidar device secured in stationary positions.
+			The flat purple triangle represents the RPLidar's horizontal range detection.
+			The transparent green rectangle in front of the person represents the computer vision model recognizing that there is a person in-front of the sensor.
+			The transparent teal pyramid represents the Brio webcam's field-of-view.
+
+		\subsection{Computer Vision}
+			Over the past term, my contribution towards our proposed design was to create a reliable image-recognition model.
+			I first started with OpenCV's pre-trained facial/pedestrian support-vector-machine (SVM) classifier.
+			This SVM is a combination of several other SVMs that detect facial features.
+			The completed SVM is intended to detect faces with high accuracy.
+			However, when applied to our design, I could not consistently replicate good results.
+			This was due to several factors, namely the SVM used is meant to perform classification on still images where the camera's perspective is far from the subject.
+			Our design specifications envision a system that quickly tracks multiple subjects in a crowded expo scenario.
+			In an expo scenario, human subjects will be moving close or away from the camera, unpredictably shifting their positions, and moving in or out of the field-of-view.
+			As seen in \ref{svm}, the OpenCV SVM model does not perform to our specification.
+			If the human subject were to turn their head or move too quickly, the SVM will have difficulty tracking their body.
+			Additionally, the SVM performs intensive calculations on the computer's CPU, severely limiting the video output's frame-rate and resolution.
+
+			
+			\begin{figure}[here]
+			\includegraphics[scale=0.75]{svm.PNG}
 			\captionof{figure}{SVM face classification (Left) fails when subject slightly turns their head (Right)}
 			\label{svm}
 			\end{figure}
-			Our design specifications envision a system that quickly tracks multiple subjects.
-			This SVM does not fulfill this requirement.
-			As seen in \ref{svm}, the SVM model is limited to faces and not very accurate.
-			If the human subject were to turn their head or move too quickly, the SVM will have difficulty tracking their body.
-			Additionally, calculations are very CPU-intensive, resulting in low frame-rate and resolution.
-			
 
-			Recognizing the SVM's weaknesses, I started experimenting with Tensorflow's open source object detection classifier. \cite{tensorflow}
-			Unsurprisingly, Tensorflow's powerful network is several magnitudes more accurate than OpenCV's static SVM.
+
+			Recognizing the SVM's weaknesses, Tensorflow's open source object detection classifier presented a better computer-vision alternative. \cite{tensorflow}
+			The Tensorflow object recognition library is better suited for this project because its actively maintained library has already been trained to recognize a large dataset of objects.
+
+
 			\begin{figure}[here]
-			\includegraphics[scale=0.5, width=\textwidth]{tensorflow.PNG}
+			\includegraphics[scale=0.5]{tensorflow.PNG}
 			\captionof{figure}{Tensorflow pre-trained model can detect multiple subjects.}
 			\label{tf-detect}
 			\end{figure}
+
+
 			Using this pre-trained Tensorflow model, our project is now able to accurately outline and label over 90 subjects as they come into view of the webcam.
 			
 	\section{Partner Evaluation}

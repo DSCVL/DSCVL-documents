@@ -7,6 +7,7 @@
 \usepackage{listings}
 \usepackage{geometry}
 \usepackage{longtable}
+\usepackage{float}
 
 
 \geometry{textheight=9.5in, textwidth=7in}
@@ -109,43 +110,44 @@
 		Infrared (IR) depth sensors such as the model used in Microsoft's Kinect \ref{def:kinect} can quickly calculate distances in indoor scenarios.
 		However, IR depth sensors can be confused by other infrared emitting sources such as other IR depth sensors or natural sunlight.
 		For these reasons, IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy in varying conditions.
-		Depth Sensing with Computer Vision and lidar proposes combining the power of computer vision with the reliability of lidar technology.
+		Depth Sensing with Computer Vision and Lidar proposes combining computer-vision image classification with lidar to create a robust and reliable depth sensor.
 
 	\section{Current State}
 
 		\subsubsection{Proposed Design}
-			The Logitech Brio webcam provides two-dimensional image but lacks depth perception.
-			The LEDDAR M16 provides accurate depth measurement in a horizontal dimension but lacks vertical depth sensing beyond a 40-degree spread.
+			The Logitech Brio webcam provides a high-resolution, two-dimensional image but lacks depth perception.
+			The LEDDAR M16 provides accurate depth measurement in a horizontal dimension but lacks vertical perspective beyond a 40-degree spread.
 			This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
-			This involves using the RPLidar's library to get depth sensing information, and using computer vision to recognize objects.
+			This involves using the M16 Lidar to get depth sensing information, and using computer vision to recognize objects.
 			
-			\begin{figure}[here]
+
+			Figure \ref{dimensions} illustrates different dimensions measured by the M16 Lidar and Brio Webcam.
+			The red cube represents the Logitech Brio webcam and M16 Lidar secured in stationary positions.
+			The flat purple triangle represents the M16 Lidar's horizontal range detection.
+			The transparent green rectangle in front of the person represents the computer vision model recognizing that there is a person in-front of the sensor.
+			The transparent teal pyramid represents the Brio webcam's field-of-view.
+			
+			\begin{figure}[H]
 				\includegraphics[scale=0.5]{different_dimensions.PNG}
 				\captionof{figure}{Visualizing different dimensions measured by the M16 Lidar and Brio Webcam.}
 				\label{dimensions}
 			\end{figure}
 
-			Figure \ref{dimensions} illustrates different dimensions measured by the M16 Lidar and Brio Webcam.
-			The red cube represents the Logitech Brio webcam and RPLidar device secured in stationary positions.
-			The flat purple triangle represents the RPLidar's horizontal range detection.
-			The transparent green rectangle in front of the person represents the computer vision model recognizing that there is a person in-front of the sensor.
-			The transparent teal pyramid represents the Brio webcam's field-of-view.
-
 		\subsection{Computer Vision}
-			Over the past term, my contribution towards our proposed design was to create a reliable image-recognition model.
-			I first started with OpenCV's pre-trained facial/pedestrian support-vector-machine (SVM) classifier.
-			This SVM is a combination of several other SVMs that detect facial features.
-			The completed SVM is intended to detect faces with high accuracy.
+			Over the past term, my contribution towards our proposed design was creating a reliable image-recognition model.
+			First, I started with OpenCV's pre-trained facial/pedestrian support-vector-machine (SVM) classifier.
+			This SVM is a combination of several other SVMs that detect the upper body, eyes, mouths, and noses.
+			The combined SVM is intended to detect faces with high accuracy.
 			However, when applied to our design, I could not consistently replicate good results.
-			This was due to several factors, namely the SVM used is meant to perform classification on still images where the camera's perspective is far from the subject.
+			This was due to several factors, namely the SVM used was meant to perform classification on still images where the camera's perspective is far from the subject.
+			
+
 			Our design specifications envision a system that quickly tracks multiple subjects in a crowded expo scenario.
 			In an expo scenario, human subjects will be moving close or away from the camera, unpredictably shifting their positions, and moving in or out of the field-of-view.
 			As seen in \ref{svm}, the OpenCV SVM model does not perform to our specification.
 			If the human subject were to turn their head or move too quickly, the SVM will have difficulty tracking their body.
 			Additionally, the SVM performs intensive calculations on the computer's CPU, severely limiting the video output's frame-rate and resolution.
-
-			
-			\begin{figure}[here]
+			\begin{figure}[H]
 			\includegraphics[scale=0.75]{svm.PNG}
 			\captionof{figure}{SVM face classification (Left) fails when subject slightly turns their head (Right)}
 			\label{svm}
@@ -153,20 +155,29 @@
 
 
 			Recognizing the SVM's weaknesses, Tensorflow's open source object detection classifier presented a better computer-vision alternative. \cite{tensorflow}
-			The Tensorflow object recognition library is better suited for this project because its actively maintained library has already been trained to recognize a large dataset of objects.
+			The Tensorflow object recognition library is better suited for this project because its library has already been trained to recognize a large dataset of objects. \cite{convolutional_object_detectors}
+			This pre-trained datasets in the Tensorflow library are sourced from other machine learning datasets including the COCO dataset, Kitti dataset, and the Open Images dataset. \cite{coco} \cite{open_images} \cite{kitti}
 
 
-			\begin{figure}[here]
+			\begin{figure}[H]
 			\includegraphics[scale=0.5]{tensorflow.PNG}
-			\captionof{figure}{Tensorflow pre-trained model can detect multiple subjects.}
+			\captionof{figure}{Our pre-trained Tensorflow model can reliably detect multiple subjects}
 			\label{tf-detect}
 			\end{figure}
 
 
 			Using this pre-trained Tensorflow model, our project is now able to accurately outline and label over 90 subjects as they come into view of the webcam.
+			In addition to compiling this Tensorflow model, I have also prepared our code for when we eventually create the depth-sensing component of our project.
+			The current state of the code will enable us to selectively edit the output video frames to draw bounding boxes on subjects as they move in and out of the camera's field of view.
+
+
+			Tensorflow also enables us to take advantage of NVIDIA CUDA, a driver that moves intensive calculations to the GPU.
+			While this increases our list of material requisitions for our physical expo demo, moving calculations to the GPU increases the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
 			
-	\section{Partner Evaluation}
+	\section{Group Evaluation}
 		My partner, Lucian Tamno, displays excellent work ethic, enthusiasm, dedication to our project, and an absolute commitment to do his best.
+		While my focus has been on the computer-vision component, Lucian has been hard at work researching and understanding the math and APIs behind the lidar systems we will be implementing.
+		I believe Lucian has put more effort into this project than me.
 		I am very proud of my partner's performance, and I am confident we can achieve our project goals despite our late project start.
 		Lucian's professional demeanor sets him apart and above many of our peers, as he is able to self-assign tasks and quickly comprehend technical concepts.
 		I believe our individual experiences in professional working environments facilitates our team chemistry and communication.
@@ -176,7 +187,15 @@
 		I believe we have a lot to teach each other, and I look forward to our final term as we build this project to reflect our best efforts.
 
 	\section{Conclusion}
-	
+		At the beginning of Winter term, my partner Lucian and I found ourselves in a challenging situation.
+		We were starting a completely new project with a rapidly approaching deadline.
+		Fortunately, both Lucian and I met our obligations and are making good progress towards our envisioned design.
+		After quickly realizing our computer-vision specification required a more powerful approach than simple OpenCV SVMs, I revamped our approach to use a pre-trained Tensorflow model.
+		Our current Tensorflow model meets our project specifications, the code is ready for the distance component to be added in.
+		I estimate the computer-vision component is about 90\% completed, some minor tuning may be required to ensure consistent classifier behavior.
+		I estimate the overall project is about 40\% completed, our final hurdle is combining the lidar distance data with my vision component.
+		Over Spring break and Fall term, we will be working to bring my vision component and Lucian's lidar work together.
+		I am very confident our project will achieve 'beta' functionality by expo, and I am very confident in our ability to get work done.
 
 	\clearpage
 

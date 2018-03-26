@@ -1,7 +1,6 @@
 main-presentation.aux
 main-presentation.log
 main-presentation.nav
-main-presentation.out
 main-presentation.snm
 main-presentation.toc
 progress_report.aux
@@ -10,3 +9,4 @@ progress_report.out
 progress_report.toc
 progress_report.synctex.gz
 main-presentation.synctex.gz
+main-presentation.out

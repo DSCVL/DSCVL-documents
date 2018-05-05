@@ -108,15 +108,14 @@
 		
 	\section{Project Purpose}
 		Infrared (IR) depth sensors such as the model used in Microsoft's Kinect \ref{def:kinect} can quickly calculate distances in indoor scenarios.
-		However, IR depth sensors can be confused by other infrared emitting sources such as other IR depth sensors or natural sunlight.
-		For these reasons, IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy distance measurement in varying conditions.
-		Depth Sensing with Computer Vision and Lidar proposes combining computer-vision image classification with lidar to create a robust and reliable depth sensor.
+		However, IR depth sensor readings can be obfuscated by other infrared emitting sources such as other IR depth sensors or natural sunlight.
+		IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy distance measurement in varying conditions.
+		Depth Sensing with Computer Vision and Lidar proposes combining computer-vision image classification with lidar technology to create a robust and reliable depth sensor.
 
-	\subsection{Design}
+	\section{Design}
 		The Logitech Brio webcam provides a high-resolution, two-dimensional image but lacks depth perception.
 		The Leddar M16 provides accurate depth measurement in a horizontal dimension but lacks vertical perspective beyond a 40-degree spread.
-		This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
-		This involves using the M16 Lidar to get depth sensing information and using computer vision to recognize objects.			
+		This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.		
 
 
 		Figure \ref{dimensions} illustrates different dimensions measured by the M16 Lidar and Brio Webcam.
@@ -132,7 +131,7 @@
 		\end{figure}
 
 
-	\subsection{Device Mount}
+	\section{Device Mount}
 		Using some spare plywood, I created a mount for the Logitech Brio webcam and Leddar M16 as shown in Figure \ref{mount1}.
 		This mount serves to stabilize the webcam and lidar devices in a stationary positions relative to each other so that accurate distance/visual calibrations can be performed.
 		If the webcam and lidar devices are not placed in consistent positions, distance information will not be synchronized with object recognition.
@@ -161,9 +160,8 @@
 		This mounting system is important to our final design because it ensures operational consistency and simplifies the overall problem. 
 
 
-		\subsection{Computer Vision}
-			Over the past term, my contribution towards our proposed design was creating a reliable image-recognition model.
-			First, I started with OpenCV's pre-trained facial/pedestrian support-vector-machine (SVM) classifier.
+		\section{Computer Vision}
+			During Winter Term, I started experimenting with OpenCV's pre-trained facial/pedestrian support-vector-machine (SVM) classifier.
 			This SVM is a combination of several other SVMs that detect the upper body, eyes, mouths, and noses.
 			The combined SVM is intended to detect faces with high accuracy.
 			However, when applied to our design, I could not consistently replicate good results.
@@ -171,8 +169,8 @@
 			
 
 			Our design specifications envision a system that quickly tracks multiple subjects in a crowded expo scenario.
-			In an expo scenario, human subjects will be moving close or away from the camera, unpredictably shifting their positions, and moving in or out of the field-of-view.
-			As seen in \ref{svm}, the OpenCV SVM model does not perform to our specification.
+			In a such a scenario, human subjects will be unpredictably shifting their positions and moving in or out of the field-of-view.
+			As seen in Figure \ref{svm}, the OpenCV SVM model does not perform to our specification.
 			If the human subject were to turn their head or move too quickly, the SVM will have difficulty tracking their body.
 			Additionally, the SVM performs intensive calculations on the computer's CPU, severely limiting the video output's frame-rate and resolution.
 			
@@ -183,28 +181,47 @@
 			\end{figure}
 
 
-			Recognizing the SVM's weaknesses, Tensorflow's open source object detection classifier presented a better computer-vision alternative. \cite{tensorflow}
+			Tensorflow's open source object detection classifier presented a better computer-vision alternative. \cite{tensorflow}
 			The Tensorflow object recognition library is better suited for this project because its library has already been trained to recognize a large dataset of objects. \cite{convolutional_object_detectors}
-			These pre-trained datasets in Tensorflow's library are sourced from other machine learning datasets including the COCO dataset, Kitti dataset, and the Open Images dataset. \cite{coco} \cite{open_images} \cite{kitti}
+			These pre-trained datasets in Tensorflow's library are sourced from other machine learning datasets and employ advanced algorithms such as Single Shot Multibox Detection and Region-Based Fully Convolutional Networks. \cite{coco} \cite{open_images} \cite{kitti}
 
 
 			\begin{figure}[H]
 			\includegraphics[scale=0.45]{tensorflow.PNG}
-			\captionof{figure}{Our pre-trained Tensorflow model can reliably detect multiple subjects}
+			\captionof{figure}{Our pre-trained Tensorflow model can  detect multiple subjects in near real-time}
 			\label{tf-detect}
 			\end{figure}
 
 
-			Using this pre-trained Tensorflow model, our project is now able to accurately outline and label over 90 subjects as they come into view of the webcam.
-			In addition to compiling this Tensorflow model, I have also prepared our code for when we eventually create the depth-sensing component of our project.
+			Using this pre-trained Tensorflow model, our project can now accurately outline and label over 90 subjects as they come into view of the webcam.
 			The current state of the code will enable us to selectively edit the output video frames to draw bounding boxes on subjects as they move in and out of the camera's field of view.
 
 
 			Tensorflow also enables us to take advantage of NVIDIA CUDA, a driver that moves intensive calculations to the GPU.
 			While this increases our list of material requisitions for our physical expo demo, moving calculations to the GPU greatly improves the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
+			
+
 			The computer vision aspect of our project is now complete.
 			Combined with a stable mount, we now have a versatile system that can recognize over 80 distinct models such as humans, bags, or animals in near real-time.
 			
+
+	\section{Current Problems}
+		\subsection{RPlidar A1 and Computer Vision Integration}
+			To ensure our project will be in a presentable state by expo, I am modifying my design to use the RPlidar A1.
+			Progress with the M16 lidar device has been slow, I do not foresee it being and integrated in time for expo.
+			I have successfully tested the RPlidar A1 and have achieved reading some point-distance angle information.
+			However, the python library used by the device calls a generator function to store its distance data.
+			This type of data structure is hard to adapt for our purposes because the device's buffer will overfill and overwrite readings if it is not called fast enough.
+			Figure \ref{reading} demonstrates this issue.
+			To remedy this, I will experiment adjusting the loop calling the Tensorflow image recognition functions.
+			I will also experiment running the RPlidar A1 in parallel with the Tensorflow image recognition.
+
+			\begin{figure}[H]
+			\includegraphics[scale=0.45]{reading.PNG}
+			\captionof{figure}{Due to the overfilling buffer my current implementation does not calculate distances correctly.}
+			\label{reading}
+			\end{figure}
+
 
 	\clearpage
 

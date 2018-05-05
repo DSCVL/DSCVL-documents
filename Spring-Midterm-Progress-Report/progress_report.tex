@@ -136,6 +136,9 @@
 
 		\subsubsection{Device Mount}
 			Using some spare plywood, I created a mount for the Logitech Brio webcam and Leddar M16 as shown in Figure \ref{mount1}.
+			This mount serves to stabilize the webcam and lidar devices in a stationary position relative to each other so that an accurate calibration can be performed.
+			If both devices moved or are not placed in consistent positions, distance information will not be synchronized with object recognition.
+			Writing an algorithm to compensate for automatic distance and object recognition calibration is an overly complex task.
 
 			\begin{figure}[H]
 				\includegraphics[scale=0.2]{mount1.PNG}
@@ -144,8 +147,8 @@
 			\end{figure}
 
 
-			Unfortunately, our progress with the Leddar M16 is slow and I do not think it will be working in time for expo.
-			Fortunately, I was able to get limited distance information working with the RPlidar A1.
+			Progress with the Leddar M16 is slow and I do not foresee it to be working and integrated in time for expo.
+			Fortunately, I was able to get distance information working with the RPlidar A1.
 			I adjusted the mount to accommodate the four plastic standoffs by drilling a few shallow holes in the base of the mount.
 			This allows the RPlidar A1 to be securely positioned as shown in Figure \ref{mount2}.
 

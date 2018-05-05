@@ -136,9 +136,9 @@
 
 		\subsubsection{Device Mount}
 			Using some spare plywood, I created a mount for the Logitech Brio webcam and Leddar M16 as shown in Figure \ref{mount1}.
-			This mount serves to stabilize the webcam and lidar devices in a stationary position relative to each other so that an accurate calibration can be performed.
-			If both devices moved or are not placed in consistent positions, distance information will not be synchronized with object recognition.
-			Writing an algorithm to compensate for automatic distance and object recognition calibration is an overly complex task.
+			This mount serves to stabilize the webcam and lidar devices in a stationary positions relative to each other so that accurate distance/visual calibrations can be performed.
+			If the webcam and lidar devices are not placed in consistent positions, distance information will not be synchronized with object recognition.
+			Writing an algorithm to compensate for automatic distance and object recognition calibration is an overly complex task and beyond the scope of this project.
 
 			\begin{figure}[H]
 				\includegraphics[scale=0.2]{mount1.PNG}
@@ -148,15 +148,19 @@
 
 
 			Progress with the Leddar M16 is slow and I do not foresee it to be working and integrated in time for expo.
-			Fortunately, I was able to get distance information working with the RPlidar A1.
-			I adjusted the mount to accommodate the four plastic standoffs by drilling a few shallow holes in the base of the mount.
-			This allows the RPlidar A1 to be securely positioned as shown in Figure \ref{mount2}.
+			Fortunately, I was able to read distance information with the RPlidar A1.
+			I adjusted the mount to accommodate the RPlidar A1 by drilling a few shallow holes in the base of the mount.
+			This allows the RPlidar A1's four plastic standoffs to fit into the base of the mount as shown in Figure \ref{mount2}.
 
 			\begin{figure}[H]
 				\includegraphics[scale=0.1]{mount2.PNG}
 				\captionof{figure}{Visualizing different dimensions measured by the M16 Lidar and Brio Webcam.}
 				\label{mount2}
 			\end{figure}
+
+			The device mounting system is complete. 
+			Our project's components can be fixed in stable positions to ensure consistent readings in different environments.
+			This mounting system is important to our final design because it ensures operational consistency and simplifies the overall problem. 
 
 
 		\subsection{Computer Vision}
@@ -173,6 +177,7 @@
 			As seen in \ref{svm}, the OpenCV SVM model does not perform to our specification.
 			If the human subject were to turn their head or move too quickly, the SVM will have difficulty tracking their body.
 			Additionally, the SVM performs intensive calculations on the computer's CPU, severely limiting the video output's frame-rate and resolution.
+			
 			\begin{figure}[H]
 			\includegraphics[scale=0.75]{svm.PNG}
 			\captionof{figure}{SVM face classification (Left) fails when subject slightly turns their head (Right)}
@@ -199,6 +204,8 @@
 
 			Tensorflow also enables us to take advantage of NVIDIA CUDA, a driver that moves intensive calculations to the GPU.
 			While this increases our list of material requisitions for our physical expo demo, moving calculations to the GPU greatly improves the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
+			The computer vision aspect of our project is now complete.
+			Combined with a stable mount, we now have a versatile system that can recognize over 80 distinct models such as humans, bags, or animals in near real-time.
 			
 
 	\clearpage

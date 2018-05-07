@@ -1,0 +1,26 @@
+\contentsline {section}{\numberline {1}Table of Contents}{}{section.1}
+\contentsline {section}{\numberline {2}Definitions}{}{section.2}
+\contentsline {subsection}{\numberline {2.1}IR}{}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}IR Depth Sensor}{}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}lidar}{}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Microsoft Kinect}{}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Logitech Brio Webcam}{}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}RPLidar A1}{}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Leddar M16}{}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}Computer Vision }{}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}Python/C API: }{}{subsection.2.9}
+\contentsline {subsection}{\numberline {2.10}DSCVL: }{}{subsection.2.10}
+\contentsline {section}{\numberline {3}Project Purpose}{}{section.3}
+\contentsline {section}{\numberline {4}Design}{}{section.4}
+\contentsline {section}{\numberline {5}Device Mount}{}{section.5}
+\contentsline {section}{\numberline {6}Computer Vision}{}{section.6}
+\contentsline {section}{\numberline {7}Current Problems}{}{section.7}
+\contentsline {subsection}{\numberline {7.1}RPlidar A1 and Computer Vision Integration}{}{subsection.7.1}
+\contentsline {section}{\numberline {8} Leddar M16 and Python/C API- [Constructs]---------Lucien}{}{section.8}
+\contentsline {section}{\numberline {9}Project Purpose}{}{section.9}
+\contentsline {section}{\numberline {10}Current State of the DSCVL}{}{section.10}
+\contentsline {subsection}{\numberline {10.1} Preliminaries and the Python/C API implementation}{}{subsection.10.1}
+\contentsline {subsubsection}{\numberline {10.1.1}The default M16-Windows setting}{}{subsubsection.10.1.1}
+\contentsline {subsubsection}{\numberline {10.1.2} The Python/C API implementation, related issues and attempted solutions}{}{subsubsection.10.1.2}
+\contentsline {subsection}{\numberline {10.2} Legacy: GUI Interface}{}{subsection.10.2}
+\contentsline {section}{\numberline {11}Conclusion}{}{section.11}

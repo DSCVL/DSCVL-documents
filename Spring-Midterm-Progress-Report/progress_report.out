@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Table of Contents}{}% 1
+\BOOKMARK [1][-]{section.2}{Definitions}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{IR}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{IR Depth Sensor}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{lidar}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Microsoft Kinect}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Logitech Brio Webcam}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.6}{RPLidar A1}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.7}{Leddar M16}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.8}{Computer Vision }{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.9}{Python/C API: }{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.10}{DSCVL: }{section.2}% 12
+\BOOKMARK [1][-]{section.3}{Project Purpose}{}% 13
+\BOOKMARK [1][-]{section.4}{Design}{}% 14
+\BOOKMARK [1][-]{section.5}{Device Mount}{}% 15
+\BOOKMARK [1][-]{section.6}{Computer Vision}{}% 16
+\BOOKMARK [1][-]{section.7}{Current Problems}{}% 17
+\BOOKMARK [2][-]{subsection.7.1}{RPlidar A1 and Computer Vision Integration}{section.7}% 18
+\BOOKMARK [1][-]{section.8}{ Leddar M16 and Python/C API- [Constructs]\204\204\204Lucien}{}% 19
+\BOOKMARK [1][-]{section.9}{Project Purpose}{}% 20
+\BOOKMARK [1][-]{section.10}{Current State of the DSCVL}{}% 21
+\BOOKMARK [2][-]{subsection.10.1}{ Preliminaries and the Python/C API implementation}{section.10}% 22
+\BOOKMARK [3][-]{subsubsection.10.1.1}{The default M16-Windows setting}{subsection.10.1}% 23
+\BOOKMARK [3][-]{subsubsection.10.1.2}{ The Python/C API implementation, related issues and attempted solutions}{subsection.10.1}% 24
+\BOOKMARK [2][-]{subsection.10.2}{ Legacy: GUI Interface}{section.10}% 25
+\BOOKMARK [1][-]{section.11}{Conclusion}{}% 26

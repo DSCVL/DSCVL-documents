@@ -86,7 +86,7 @@
 		\subsection{IR Depth Sensor}\label{def:depthsensor}
 		Device that calculates distances by emitting infrared patterns. 
 		
-		\subsection{lidar}\label{def:lidar}
+		\subsection{LIDAR}\label{def:lidar}
 		Light Detection And Ranging - Depth sensing technology that uses lasers to measure distance.
 		
 		\subsection{Microsoft Kinect}\label{def:kinect}
@@ -104,19 +104,29 @@
 		\subsection{Computer Vision }\label{def:vision}
 		The methods for acquiring, processing, analyzing, and classifying digital images and extracting information.
 
-		
-	\section{Project Purpose}
+	\section{Introduction}
+		- team (me)
+		- how I did the whole project myself
+		- client (kevin)
+		- project purpose
+			- client noted that at a robotics competition, all robots that had been designed and tested indoors didn't work outside because IR cameras are subject to interference from ambient sunlight and other IR sensors
+			- proposed designing a more robust system that won't be affected by ambient lighting conditions to be used in autonomous systems
+
+
+	\subsection{Project Purpose}
 		Infrared (IR) depth sensors such as the model used in Microsoft's Kinect \ref{def:kinect} can quickly calculate distances in indoor scenarios.
 		However, IR depth sensors can be confused by other infrared emitting sources such as other IR depth sensors or natural sunlight.
 		For these reasons, IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy distance measurement in varying conditions.
 		Depth Sensing with Computer Vision and Lidar proposes combining computer-vision image classification with lidar to create a robust and reliable depth sensor.
 
-		\section{Design}
+	\section{Design}
 			The Logitech Brio webcam provides a high-resolution, two-dimensional image but lacks depth perception.
-			The LEDDAR M16 provides accurate depth measurement in a horizontal dimension but lacks vertical perspective beyond a 40-degree spread.
+			The lidar provides accurate depth measurement in a horizontal dimension but lacks vertical perspective.
 			This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
-			This involves using the M16 Lidar to get depth sensing information and using computer vision to recognize objects.			
-
+			This involves using the M16 Lidar to get depth sensing information and using computer vision to recognize objects.
+			The result is a scalable and reliable depth sensor that will not be affected by natural light, and can be further improved by training a better computer vision model or adding more sensors.
+			This project hopes to achieve a proof of concept design to be showcased in a live demo at Oregon State University's 2018 Undergraduate engineering expo.			
+			This live demo shall consist of the full system pointed at the project booth's audience. 
 
 			Figure \ref{dimensions} illustrates different dimensions measured by the M16 Lidar and Brio Webcam.
 			The red cube represents the Logitech Brio webcam and M16 Lidar secured in stationary positions.
@@ -129,6 +139,8 @@
 				\captionof{figure}{Visualizing different dimensions measured by the M16 Lidar and Brio Webcam.}
 				\label{dimensions}
 			\end{figure}
+
+		\subsection{Physical Mount Design}
 
 		\subsection{Computer Vision}
 			I started with OpenCV's pre-trained facial/pedestrian support-vector-machine (SVM) classifier.
@@ -143,6 +155,8 @@
 			As seen in \ref{svm}, the OpenCV SVM model does not perform to my specification.
 			If the human subject were to turn their head or move too quickly, the SVM will have difficulty tracking their body.
 			Additionally, the SVM performs intensive calculations on the computer's CPU, severely limiting the video output's frame-rate and resolution.
+			
+
 			\begin{figure}[H]
 			\includegraphics[scale=0.75]{svm.PNG}
 			\captionof{figure}{SVM face classification (Left) fails when subject slightly turns their head (Right)}
@@ -157,7 +171,7 @@
 
 			\begin{figure}[H]
 			\includegraphics[scale=0.5]{tensorflow.PNG}
-			\captionof{figure}{This pre-trained Tensorflow model can reliably detect multiple subjects}
+			\captionof{figure}{Pre-trained Tensorflow model detecting multiple subjects}
 			\label{tf-detect}
 			\end{figure}
 
@@ -169,10 +183,13 @@
 			Tensorflow also enables us to take advantage of NVIDIA CUDA, a driver that moves intensive calculations to the GPU.
 			While this increases the list of material requisitions for demo, moving calculations to the GPU greatly improves the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
 			
+	\subsection{Final System Overview}
+
 
 	\clearpage
 
-	\section{Ten-Week Term Retrospective}
+	\section{Cumulative Ten-Week Term Retrospective}
+		\subsection{Winter 2018}
 		\begin{longtable}{|l|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}\hline \textbf{Week} & \textbf{Positives} & \textbf{Deltas} & \textbf{Actions}\\\hline
 		1 	&
 			-

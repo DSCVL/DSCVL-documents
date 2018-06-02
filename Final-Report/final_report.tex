@@ -111,9 +111,7 @@
 		For these reasons, IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy distance measurement in varying conditions.
 		Depth Sensing with Computer Vision and Lidar proposes combining computer-vision image classification with lidar to create a robust and reliable depth sensor.
 
-	\section{Current State}
-
-		\subsubsection{Proposed Design}
+		\section{Design}
 			The Logitech Brio webcam provides a high-resolution, two-dimensional image but lacks depth perception.
 			The LEDDAR M16 provides accurate depth measurement in a horizontal dimension but lacks vertical perspective beyond a 40-degree spread.
 			This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
@@ -133,7 +131,6 @@
 			\end{figure}
 
 		\subsection{Computer Vision}
-			Over the past term, my contribution towards the final design was creating a reliable image-recognition model.
 			I started with OpenCV's pre-trained facial/pedestrian support-vector-machine (SVM) classifier.
 			This SVM is a combination of several other SVMs that detect the upper body, eyes, mouths, and noses.
 			The combined SVM is intended to detect faces with high accuracy.
@@ -141,7 +138,7 @@
 			This was due to several factors, namely the SVM used was meant to perform classification on still images where the camera's perspective is far from the subject.
 			
 
-			Our design specifications envision a system that quickly tracks multiple subjects in a crowded expo scenario.
+			My design specifications envision a system that quickly tracks multiple subjects in a crowded expo scenario.
 			In an expo scenario, human subjects will be moving close or away from the camera, unpredictably shifting their positions, and moving in or out of the field-of-view.
 			As seen in \ref{svm}, the OpenCV SVM model does not perform to my specification.
 			If the human subject were to turn their head or move too quickly, the SVM will have difficulty tracking their body.
@@ -160,18 +157,17 @@
 
 			\begin{figure}[H]
 			\includegraphics[scale=0.5]{tensorflow.PNG}
-			\captionof{figure}{Our pre-trained Tensorflow model can reliably detect multiple subjects}
+			\captionof{figure}{This pre-trained Tensorflow model can reliably detect multiple subjects}
 			\label{tf-detect}
 			\end{figure}
 
 
-			Using this pre-trained Tensorflow model, our project is now able to accurately outline and label over 90 subjects as they come into view of the webcam.
-			In addition to compiling this Tensorflow model, I have also prepared our code for when we eventually create the depth-sensing component of our project.
-			The current state of the code will enable us to selectively edit the output video frames to draw bounding boxes on subjects as they move in and out of the camera's field of view.
+			Using this pre-trained Tensorflow model, my project is now able to accurately outline and label over 90 subjects as they come into view of the webcam.
+			At the end of Winter Term, the state of the code will enableselectively editing the output video frames to draw bounding boxes on subjects as they move in and out of the camera's field of view.
 
 
 			Tensorflow also enables us to take advantage of NVIDIA CUDA, a driver that moves intensive calculations to the GPU.
-			While this increases our list of material requisitions for our physical expo demo, moving calculations to the GPU greatly improves the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
+			While this increases the list of material requisitions for demo, moving calculations to the GPU greatly improves the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
 			
 
 	\clearpage

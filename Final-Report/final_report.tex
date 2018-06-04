@@ -9,6 +9,14 @@
 \usepackage{longtable}
 \usepackage{float}
 
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{xparse}
+
+\NewDocumentCommand{\codeword}{v}{%
+\texttt{\textcolor{blue}{#1}}%
+}
 
 \geometry{textheight=9.5in, textwidth=7in}
 
@@ -178,14 +186,31 @@
 
 		\subsection{Physical Mount Design}
 
+		A stationary mount simplifies the complexity of aligning the different dimensions measured by the LIDAR and webcam. 
+		I built a simple wooden mount for this project, joining them together at a 90-degree angle to make a stand as pictured in figure \ref{final_rplidar}.
+		Origionally, I built the mount to accommodate the LEDDAR M16 LIDAR, however when it became clear that it would not be ready for expo, I adapted the mount to fit the RPLIDAR A1. 
+		This was accomplished by drilling four small holes in the base of the mount to fit the RPLIDAR's plastic standoffs.
+
+		\begin{figure}[H]
+			\includegraphics[scale=0.15]{mount_m16.JPG}
+			\captionof{figure}{The mount with LEDDAR M16.}
+			\label{mount_m16}
+		\end{figure}
+
+		\begin{figure}[H]
+			\includegraphics[scale=0.1]{final_rplidar.jpg}
+			\captionof{figure}{The final mount design with the RPLIDAR A1.}
+			\label{final_rplidar}
+		\end{figure}
+
 		\subsection{Computer Vision}
 			I started with OpenCV's pre-trained facial/pedestrian support-vector-machine (SVM) classifier.
 			This SVM is a combination of several other SVMs that detect the upper body, eyes, mouths, and noses.
 			The combined SVM is intended to detect faces with high accuracy.
 			However, when applied to my design, I could not consistently replicate good results.
 			This was due to several factors, namely the SVM used was meant to perform classification on still images where the camera's perspective is far from the subject.
-			
 
+			
 			My design specifications envision a system that quickly tracks multiple subjects in a crowded expo scenario.
 			In an expo scenario, human subjects will be moving close or away from the camera, unpredictably shifting their positions, and moving in or out of the field-of-view.
 			As seen in \ref{svm}, the OpenCV SVM model does not perform to my specification.
@@ -220,6 +245,60 @@
 			While this increases the list of material requisitions for demo, moving calculations to the GPU greatly improves the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
 			
 	\subsection{Final System Overview}
+
+	\subsection{Installation Instructions}
+		The original Tensorflow model can be viewed here \codeword{https://goo.gl/Hkcrf3}
+		Tested, developed, and executed on Windows 10, build 1803
+	\subsubsection{Dependencies}
+	\begin{enumerate}
+		\item Python 3.5.2 - \codeword{https://www.python.org/downloads/release/python-352/}
+		\item I recommend installing Tensorflow-gpu to run visualization
+			\subitem \codeword{pip3 install --upgrade tensorflow-gpu}
+		\item RPlidar A1 - \codeword{https://www.slamtec.com/en/lidar/a1}
+			\subitem \codeword{pip3 install rplidar}
+		\item OpenCV 3.4.0.12
+			\subitem \codeword{pip3 install opencv-python==3.4.0.12}
+		\item CP210x USB to UART Bridge VCP Driver (If on Windows 10, build 1803, please see below)
+			\subitem \codeword{https://goo.gl/oiywRV}
+	\end{enumerate}
+
+	\subsubsection{Tensorflow-gpu}
+	\begin{enumerate}
+		\item Nvidia CUDA Toolkit 9.0.176
+		\item Nvidia CUDnn v7.0.4 for CUDA 9.0
+	\end{enumerate}
+
+	\subsubsection{Windows 10, build 1803 Driver Fix}
+	The CP210x USB to UART Bridge VCP Driver, required for RPlidar A1, does not meet Windows driver INF requirements and will not install.
+
+	Read more here: \codeword{https://goo.gl/5erDwL}
+
+	Instructions to enable unsigned driver installation - \codeword{https://goo.gl/EzrGUx}
+
+	My modified driver download- \codeword{https://drive.google.com/file/d/1jKxpAml_JoFPP2b4fXIjJWZ2_udghgj9/view?usp=sharing}
+
+	\subsubsection{Run Visualization}
+	\begin{enumerate}
+		\item Install all dependencies
+		\item Clone repository
+			\subitem \codeword{git clone https://github.com/DSCVL/DSCVL-Vision.git}
+		\item In file \codeword{lam_helper.py}, replace line 71 \codeword{PORT_NAME = 'COM15'} with the COM port that the RPlidar A1 is connected to.
+		\item Ensure web cam and RPlidar are plugged in, execute with 
+			\subitem \codeword{python main.py}
+	\end{enumerate}
+
+
+	\begin{figure}[H]
+	\includegraphics[scale=0.1]{expo1.jpg}
+	\captionof{figure}{Senior design expo.}
+	\label{expo1}
+	\end{figure}
+
+	\begin{figure}[H]
+	\includegraphics[scale=0.1]{expo2.jpg}
+	\captionof{figure}{Senior design expo, photo by Dr.Kirsten Winters}
+	\label{expo2}
+	\end{figure}
 
 	\clearpage
 

@@ -188,7 +188,7 @@
 
 		A stationary mount simplifies the complexity of aligning the different dimensions measured by the LIDAR and webcam. 
 		I built a simple wooden mount for this project, joining them together at a 90-degree angle to make a stand as pictured in figure \ref{final_rplidar}.
-		Origionally, I built the mount to accommodate the LEDDAR M16 LIDAR, however when it became clear that it would not be ready for expo, I adapted the mount to fit the RPLIDAR A1. 
+		Originally I built the mount to accommodate the LEDDAR M16 LIDAR, however when it became clear that it would not be ready for expo, I adapted the mount to fit the RPLIDAR A1. 
 		This was accomplished by drilling four small holes in the base of the mount to fit the RPLIDAR's plastic standoffs.
 
 		\begin{figure}[H]
@@ -231,74 +231,99 @@
 
 
 			\begin{figure}[H]
-			\includegraphics[scale=0.5]{tensorflow.PNG}
-			\captionof{figure}{Pre-trained Tensorflow model detecting multiple subjects}
+			\includegraphics[scale=0.4]{tensorflow.PNG}
+			\captionof{figure}{Pre-trained Tensorflow model detecting multiple subjects.}
 			\label{tf-detect}
 			\end{figure}
 
 
 			Using this pre-trained Tensorflow model, my project is now able to accurately outline and label over 90 subjects as they come into view of the webcam.
-			At the end of Winter Term, the state of the code will enableselectively editing the output video frames to draw bounding boxes on subjects as they move in and out of the camera's field of view.
+			At the end of Winter Term, the state of the code will enable selectively editing the output video frames to draw bounding boxes on subjects as they move in and out of the camera's field of view.
 
 
 			Tensorflow also enables us to take advantage of NVIDIA CUDA, a driver that moves intensive calculations to the GPU.
 			While this increases the list of material requisitions for demo, moving calculations to the GPU greatly improves the output video quality, frame rate, resolution, and classification speed. \cite{nvidia}
-			
-	\subsection{Final System Overview}
+
+	\section{Final System Design}
+		The final system consists of the RPLIDAR A1 and Logitech Brio web cam mounted as shown in figure \ref{final_rplidar}.
+		During development, it became clear that the RPLIDAR A1 is not an ideal LIDAR device.
+		It is clearly a budget hobbyist device whose cost savings significantly affect performance.
+		
+		\begin{figure}[H]
+		\includegraphics[scale=0.15]{final3.jpg}
+		\captionof{figure}{Two-subject full system test. Successful classification but unsuccessful distance measurement on one subject.}
+		\label{final3}
+		\end{figure}
+
+		\begin{figure}[H]
+		\includegraphics[scale=0.4]{final2.PNG}
+		\captionof{figure}{Two-subject full system test with two stationary subjects.}
+		\label{final2}
+		\end{figure}
+
+
+		\begin{figure}[H]
+		\includegraphics[scale=0.4]{final1.PNG}
+		\captionof{figure}{Two-subject full system test with one stationary subject and one moving subject. One misclassification.}
+		\label{final1}
+		\end{figure}
+
+		\begin{figure}[H]
+		\includegraphics[scale=0.15]{expo1.jpg}
+		\captionof{figure}{Senior design expo.}
+		\label{expo1}
+		\end{figure}
+
+		\begin{figure}[H]
+		\includegraphics[scale=0.1]{expo2.jpg}
+		\captionof{figure}{Senior design expo, photo by Dr.Kirsten Winters}
+		\label{expo2}
+		\end{figure}
 
 	\subsection{Installation Instructions}
 		The original Tensorflow model can be viewed here \codeword{https://goo.gl/Hkcrf3}
 		Tested, developed, and executed on Windows 10, build 1803
-	\subsubsection{Dependencies}
-	\begin{enumerate}
-		\item Python 3.5.2 - \codeword{https://www.python.org/downloads/release/python-352/}
-		\item I recommend installing Tensorflow-gpu to run visualization
-			\subitem \codeword{pip3 install --upgrade tensorflow-gpu}
-		\item RPlidar A1 - \codeword{https://www.slamtec.com/en/lidar/a1}
-			\subitem \codeword{pip3 install rplidar}
-		\item OpenCV 3.4.0.12
-			\subitem \codeword{pip3 install opencv-python==3.4.0.12}
-		\item CP210x USB to UART Bridge VCP Driver (If on Windows 10, build 1803, please see below)
-			\subitem \codeword{https://goo.gl/oiywRV}
-	\end{enumerate}
 
-	\subsubsection{Tensorflow-gpu}
-	\begin{enumerate}
-		\item Nvidia CUDA Toolkit 9.0.176
-		\item Nvidia CUDnn v7.0.4 for CUDA 9.0
-	\end{enumerate}
+		\subsubsection{Dependencies}
+		\begin{enumerate}
+			\item Python 3.5.2 - \codeword{https://www.python.org/downloads/release/python-352/}
+			\item I recommend installing Tensorflow-gpu to run visualization
+				\subitem \codeword{pip3 install --upgrade tensorflow-gpu}
+			\item RPlidar A1 - \codeword{https://www.slamtec.com/en/lidar/a1}
+				\subitem \codeword{pip3 install rplidar}
+			\item OpenCV 3.4.0.12
+				\subitem \codeword{pip3 install opencv-python==3.4.0.12}
+			\item CP210x USB to UART Bridge VCP Driver (If on Windows 10, build 1803, please see below)
+				\subitem \codeword{https://goo.gl/oiywRV}
+		\end{enumerate}
 
-	\subsubsection{Windows 10, build 1803 Driver Fix}
-	The CP210x USB to UART Bridge VCP Driver, required for RPlidar A1, does not meet Windows driver INF requirements and will not install.
+		\subsubsection{Tensorflow-gpu}
+		If you are using Tensorflow-gpu, I used the following CUDA and CUDnn versions.
+		This project was developed and tested on an Nvidia GTX 1080, but any CUDA-enabled GPU should work too.
+		Memory issues were noted when running on a GTX 750 Ti.
+		\begin{enumerate}
+			\item Nvidia CUDA Toolkit 9.0.176
+			\item Nvidia CUDnn v7.0.4 for CUDA 9.0
+		\end{enumerate}
 
-	Read more here: \codeword{https://goo.gl/5erDwL}
+		\subsubsection{Windows 10, build 1803 Driver Fix}
+		The CP210x USB to UART Bridge VCP Driver, required for RPlidar A1, does not meet Windows driver INF requirements and will not install.
 
-	Instructions to enable unsigned driver installation - \codeword{https://goo.gl/EzrGUx}
+		Read more here: \codeword{https://goo.gl/5erDwL}
 
-	My modified driver download- \codeword{https://drive.google.com/file/d/1jKxpAml_JoFPP2b4fXIjJWZ2_udghgj9/view?usp=sharing}
+		Instructions to enable unsigned driver installation - \codeword{https://goo.gl/EzrGUx}
 
-	\subsubsection{Run Visualization}
-	\begin{enumerate}
-		\item Install all dependencies
-		\item Clone repository
-			\subitem \codeword{git clone https://github.com/DSCVL/DSCVL-Vision.git}
-		\item In file \codeword{lam_helper.py}, replace line 71 \codeword{PORT_NAME = 'COM15'} with the COM port that the RPlidar A1 is connected to.
-		\item Ensure web cam and RPlidar are plugged in, execute with 
-			\subitem \codeword{python main.py}
-	\end{enumerate}
+		My modified driver download- \codeword{https://drive.google.com/file/d/1jKxpAml_JoFPP2b4fXIjJWZ2_udghgj9/view?usp=sharing}
 
-
-	\begin{figure}[H]
-	\includegraphics[scale=0.1]{expo1.jpg}
-	\captionof{figure}{Senior design expo.}
-	\label{expo1}
-	\end{figure}
-
-	\begin{figure}[H]
-	\includegraphics[scale=0.1]{expo2.jpg}
-	\captionof{figure}{Senior design expo, photo by Dr.Kirsten Winters}
-	\label{expo2}
-	\end{figure}
+		\subsubsection{Run Visualization}
+		\begin{enumerate}
+			\item Install all dependencies
+			\item Clone repository
+				\subitem \codeword{git clone https://github.com/DSCVL/DSCVL-Vision.git}
+			\item In file \codeword{lam_helper.py}, replace line 71 \codeword{PORT_NAME = 'COM15'} with the COM port that the RPlidar A1 is connected to.
+			\item Ensure web cam and RPlidar are plugged in, execute with the following command.
+				\subitem \codeword{python main.py}
+		\end{enumerate}
 
 	\clearpage
 

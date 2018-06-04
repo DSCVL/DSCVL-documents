@@ -16,7 +16,7 @@
 \def \CapstoneTeamName{			}
 \def \CapstoneTeamNumber{		69}
 \def \GroupMemberOne{			Kin-Ho Lam}
-\def \CapstoneProjectName{		Depth Sensing with Computer Vision and Lidar}
+\def \CapstoneProjectName{		Depth Sensing with Computer Vision and LIDAR}
 \def \CapstoneSponsorCompany{	Oregon State University}
 \def \CapstoneSponsorPerson{	D. Kevin McGrath}
 
@@ -67,7 +67,7 @@
 				\vspace{20pt}
 			}
 			\begin{abstract}  
- 				Depth Sensing with Computer Vision and Lidar proposes combining computer vision and lidar to create a reliable depth sensor.
+ 				Depth Sensing with Computer Vision and LIDAR proposes combining computer vision and LIDAR to create a reliable depth sensor.
 				This document details its project member's progress toward a final design.
 			\end{abstract}     
 		\end{singlespace}
@@ -93,52 +93,82 @@
 		A product that uses an IR Depth sensor to measure distances.
 		
 		\subsection{Logitech Brio Webcam}\label{def:brio}
-		Web-cam made by Logitech. \cite{logitech}
+		A 4k Logitech web cam. \cite{logitech}
 		
 		\subsection{RPLidar A1}\label{def:rplidar}
-		A budget lidar device made by Slamtec. \cite{slamtec}
+		A budget LIDAR device made by Slamtec. \cite{slamtec}
 
 		\subsection{Leddar M16}\label{def:m16}
-		A solid-state lidar device made by Leddar. \cite{leddartech}
+		A solid-state LIDAR device made by Leddar. \cite{leddartech}
 
 		\subsection{Computer Vision }\label{def:vision}
 		The methods for acquiring, processing, analyzing, and classifying digital images and extracting information.
 
 	\section{Introduction}
-		- team (me)
-		- how I did the whole project myself
-		- client (kevin)
-		- project purpose
-			- client noted that at a robotics competition, all robots that had been designed and tested indoors didn't work outside because IR cameras are subject to interference from ambient sunlight and other IR sensors
-			- proposed designing a more robust system that won't be affected by ambient lighting conditions to be used in autonomous systems
+		Depth Sensing with Computer Vision and LIDAR aims to create a reliable depth sensing system using computer vision and LIDAR. 
+		This project spanned 2018 Winter and Spring terms at Oregon State University.
+		I, Kin-Ho Lam, researched, designed, and built this project in its entirety by myself. 
+		Much of this project would not have been possible without my project's sponsor, Kevin McGrath, who supplied equipment and technical guidance.
+		
+
+		This project's motivation came from an annual robotics competition at Oregon State University, my client noted that all the robots had been designed and tested indoors.
+		This later proved to be an issue because when the robots were brought outside for a competition, their guidance systems failed to work as the IR cameras were inherently subject to interference from the Sun's ambient light.
+		As the prevalence of automation in our daily lives increases, such as autonomous cars or robots, a cheap and scalable depth sensing system that is resistant to common interferences is necessary.
+		The goal of this project is to create a reliable depth sensing system using computer vision and LIDAR.
+		Such a system that combines these two technologies will be more reliable than infrared depth sensing because cameras and LIDAR devices are less prone to interference from ambient light or anomalies.
+
+	\subsection{Existing Depth Sensing Technology}
+		\subsubsection{Lidar}
+			LIDAR stands for light detection and ranging.
+			LIDAR is a distance finding system that uses a laser to determine distance and angle of objects relative to the sensor.
+			Most LIDAR devices use a low powered 600-1000 nm laser which is mounted on a motor to sweep the laser in a circular motion.
+			A receiver is used to measure the time it takes for the laser to bounce back to the sensor upon encountering an object.
+			Commercial LIDAR systems are relatively low-cost.
+			Their ability to work in varying lighting conditions and ability to detect small objects makes them well suited for use in self-driving cars or autonomous robots. 
+
+		\subsubsection{Infrared Depth Sensors}
+			IR, or infrared depth sensors, strobe an infrared pattern on objects in front of it.
+			This infrared pattern is picked up by a receiving camera, which uses the pattern and some basic geometry to calculate distance.
+			While very accurate and cheap, IR depth sensors are not suited for self-driving cars or autonomous robots because they are highly sensitive to light conditions.
+			Two IR depth sensors pointing at the same subject will overlap and confuse each other's sensors.
+			Natural sunlight will also blind the sensor by washing out the IR pattern.
+
+		\subsubsection{Radar}
+			Radar stands for radio detection and ranging.
+			Radar is an object-detection system that uses radio waves to determine the distance, angle, and velocity of objects relative to the sensor.
+			A radar system consists of a transmitter producing electromagnetic waves, a transmitting antenna, a receiving antenna, and a processing system to interpret the data and determine the locations of objects.
+			Radar works by sending out electromagnetic waves, then measuring the intensity of the reflection. 
+			Radar systems are widely used for military applications, airplanes, and weather forecasting.
+			While radar systems have been tested to work extremely reliably in extreme weather conditions, unlike LIDAR, radar cannot detect small objects as easily. 
+			This is especially problematic when trying to apply a radar system to an autonomous car system; a radar system may not detect a narrow pole or small object in front of it.
 
 
 	\subsection{Project Purpose}
 		Infrared (IR) depth sensors such as the model used in Microsoft's Kinect \ref{def:kinect} can quickly calculate distances in indoor scenarios.
 		However, IR depth sensors can be confused by other infrared emitting sources such as other IR depth sensors or natural sunlight.
 		For these reasons, IR depth sensors cannot be used in self-driving cars, outdoor robots, or any any device that requires high accuracy distance measurement in varying conditions.
-		Depth Sensing with Computer Vision and Lidar proposes combining computer-vision image classification with lidar to create a robust and reliable depth sensor.
+		Depth Sensing with Computer Vision and LIDAR proposes combining computer-vision image classification with LIDAR to create a robust and reliable depth sensor.
 
 	\section{Design}
-			The Logitech Brio webcam provides a high-resolution, two-dimensional image but lacks depth perception.
-			The lidar provides accurate depth measurement in a horizontal dimension but lacks vertical perspective.
-			This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
-			This involves using the M16 Lidar to get depth sensing information and using computer vision to recognize objects.
-			The result is a scalable and reliable depth sensor that will not be affected by natural light, and can be further improved by training a better computer vision model or adding more sensors.
-			This project hopes to achieve a proof of concept design to be showcased in a live demo at Oregon State University's 2018 Undergraduate engineering expo.			
-			This live demo shall consist of the full system pointed at the project booth's audience. 
+		The Logitech Brio webcam provides a high-resolution, two-dimensional image but lacks depth perception.
+		The LIDAR provides accurate depth measurement in a horizontal dimension but lacks vertical perspective.
+		This project proposes bridging the utility of both devices by securing them in stationary positions, then using software to combine their outputs.
+		This involves using the M16 LIDAR to get depth sensing information and using computer vision to recognize objects.
+		The result is a scalable and reliable depth sensor that will not be affected by natural light, and can be further improved by training a better computer vision model or adding more sensors.
+		This project hopes to achieve a proof of concept design to be showcased in a live demo at Oregon State University's 2018 Undergraduate engineering expo.			
+		This live demo shall consist of the full system pointed at the project booth's audience. 
 
-			Figure \ref{dimensions} illustrates different dimensions measured by the M16 Lidar and Brio Webcam.
-			The red cube represents the Logitech Brio webcam and M16 Lidar secured in stationary positions.
-			The flat purple triangle represents the M16 Lidar's horizontal range detection.
-			The transparent green rectangle in front of the person represents the computer vision model recognizing that there is a person in-front of the sensor.
-			The transparent teal pyramid represents the Brio webcam's field-of-view.
-			
-			\begin{figure}[H]
-				\includegraphics[scale=0.5]{different_dimensions.PNG}
-				\captionof{figure}{Visualizing different dimensions measured by the M16 Lidar and Brio Webcam.}
-				\label{dimensions}
-			\end{figure}
+		Figure \ref{dimensions} illustrates different dimensions measured by the M16 LIDAR and Brio Webcam.
+		The red cube represents the Logitech Brio webcam and M16 LIDAR secured in stationary positions.
+		The flat purple triangle represents the M16 LIDAR's horizontal range detection.
+		The transparent green rectangle in front of the person represents the computer vision model recognizing that there is a person in-front of the sensor.
+		The transparent teal pyramid represents the Brio webcam's field-of-view.
+		
+		\begin{figure}[H]
+			\includegraphics[scale=0.5]{different_dimensions.PNG}
+			\captionof{figure}{Visualizing different dimensions measured by the M16 LIDAR and Brio Webcam.}
+			\label{dimensions}
+		\end{figure}
 
 		\subsection{Physical Mount Design}
 

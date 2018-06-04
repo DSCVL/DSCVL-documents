@@ -124,14 +124,20 @@
 			Most LIDAR devices use a low powered 600-1000 nm laser which is mounted on a motor to sweep the laser in a circular motion.
 			A receiver is used to measure the time it takes for the laser to bounce back to the sensor upon encountering an object.
 			Commercial LIDAR systems are relatively low-cost.
-			Their ability to work in varying lighting conditions and ability to detect small objects makes them well suited for use in self-driving cars or autonomous robots. 
+			Their ability to work in varying lighting conditions and ability to detect small objects makes them well suited for use in self-driving cars or autonomous robots. \cite{lidar-uk}
 
 		\subsubsection{Infrared Depth Sensors}
 			IR, or infrared depth sensors, strobe an infrared pattern on objects in front of it.
 			This infrared pattern is picked up by a receiving camera, which uses the pattern and some basic geometry to calculate distance.
 			While very accurate and cheap, IR depth sensors are not suited for self-driving cars or autonomous robots because they are highly sensitive to light conditions.
 			Two IR depth sensors pointing at the same subject will overlap and confuse each other's sensors.
-			Natural sunlight will also blind the sensor by washing out the IR pattern.
+			Natural sunlight will also blind the sensor by washing out the IR pattern. \cite{ibrahim_2018}
+
+		\begin{figure}[H]
+			\includegraphics[scale=0.5]{kinect_depth.jpg}
+			\captionof{figure}{Kinect depth sensor translating the IR-dot pattern into a 3D representation. \cite{ibrahim_2018}}
+			\label{kinect}
+		\end{figure}
 
 		\subsubsection{Radar}
 			Radar stands for radio detection and ranging.
@@ -140,7 +146,7 @@
 			Radar works by sending out electromagnetic waves, then measuring the intensity of the reflection. 
 			Radar systems are widely used for military applications, airplanes, and weather forecasting.
 			While radar systems have been tested to work extremely reliably in extreme weather conditions, unlike LIDAR, radar cannot detect small objects as easily. 
-			This is especially problematic when trying to apply a radar system to an autonomous car system; a radar system may not detect a narrow pole or small object in front of it.
+			This is especially problematic when trying to apply a radar system to an autonomous car system; a radar system may not detect a narrow pole or small object in front of it. \cite{aus}
 
 
 	\subsection{Project Purpose}
@@ -166,7 +172,7 @@
 		
 		\begin{figure}[H]
 			\includegraphics[scale=0.5]{different_dimensions.PNG}
-			\captionof{figure}{Visualizing different dimensions measured by the M16 LIDAR and Brio Webcam.}
+			\captionof{figure}{Visualizing different dimensions measured by the LIDAR and Brio Webcam.}
 			\label{dimensions}
 		\end{figure}
 
@@ -366,5 +372,87 @@
 			\\\hline
 		\end{longtable}
 
+	\subsection{Spring 2018}
+		\begin{longtable}{|l|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}\hline \textbf{Week} & \textbf{Positives} & \textbf{Deltas} & \textbf{Actions}\\\hline
+		1	&
+			&
+			No idea if Lucian is working on the M16, sounds like he has trouble with it.
+			Has yet to show me any working code.
+			&
+			I'm going to  work on the Rplidar A1 as backup
+			RPLIDAR A1 Driver: https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers
+		\\\hline
+		2	&
+			&
+			I'm not convinced Lucian is working on his part of the project.
+			He keeps promising he'll get it done that week but when we meet to work on it he claims hes blocked trying to fix some environment issue.
+			&
+			I'm going to continue working on Rplidar A1 and designing the mount.
+		\\\hline
+		3	&
+			I've finished building the mount, I'm using two pieces of plywood joined in an L-shape. It's made out of wood, the logitech brio webcam will just sit ontop and I've marked out where the LIDAR m16 will screw in. Kevin lent me some go-pro mounts to mount everything but I can't use them because the Brio's usb-c cable sticks out the back and gets in the way.
+			&
+			Still no progress from Lucian
+			&
+		\\\hline
+		4	&
+			&
+			No progress from Lucian.
+			&
+			We need to work on the midterm progress report and poster.
+		\\\hline
+		5	&
+			All of my stuff is done, the computer vision stuff is completed. 
+			&
+			No progress from Lucian.
+			&
+			I'm going to get the RPLIDAR A1 and start integrating that. Unfortunately Lucian has it and he hasn't given me any code to use it so I guess I'll just figure it out.
+		\\\hline
+		6	&
+			Windows update 1803 messed up the RPLIDAR A1 driver. I found a fix on their forums
+			Steps to fix:
+			\begin{enumerate}
+				\item Download the Windows 10 Universal driver from here: https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers
+
+				\item Edit the .inf file and replace all 13 with 12.
+				\item Open admin cmd
+				\item bcdedit /set testsigning on
+			\end{enumerate}
+			I have successfully integrated the RPLIDAR A1 into my work. This involved writing a small python program to deal with the RPLIDAR's poorly implemented generator function in the python driver.
+			&
+			No progress from Lucian.
+			&
+		\\\hline
+		7	&
+			Meeting with Kevin
+			- Kevin lent me the following for expo
+			\begin{itemize}
+				\item GTX 1080 ti
+				\item 125 GB SSD
+			\end{itemize}
+			Tested new components in demo PC, everything works.
+			Framerate improvement over GTX 750 ti, 1080 is probably unnecessary because the demo PC's i5 is a bottleneck but the error "running out of video memory" is gone.
+			Expo was very successful, a lot of interest in my project.
+			&
+			At the beginning of the week it's clear Lucian still hasn't done anything. He messed up the repo organization but whatever, nothing important was in that particular one. 
+			I think it's pretty sad I had to do this whole project by myself.
+			&
+		\\\hline
+		8	&
+			&
+			&
+			Worked on final report
+		\\\hline
+		9	&
+			&
+			&
+			Worked on final report
+		\\\hline
+		10	&
+			&
+			&
+			Worked on final report
+		\\\hline
+		\end{longtable}
 \end{singlespace}
 \end{document}

@@ -247,7 +247,12 @@
 	\section{Final System Design}
 		The final system consists of the RPLIDAR A1 and Logitech Brio web cam mounted as shown in figure \ref{final_rplidar}.
 		During development, it became clear that the RPLIDAR A1 is not an ideal LIDAR device.
-		It is clearly a budget hobbyist device whose cost savings significantly affect performance.
+		It is a budget hobbyist device whose cost savings significantly affect performance.
+		This can be seen in the RPLIDAR's limited range.
+		Its sensor/laser assembly fails to reliably detect subjects beyond two meters from the mount. 
+		This limits the overall system as subjects must stand within two meters of the system to be properly detected.
+		Additionally, the laser experiences significant loss limiting the point aggregation necessary for proper classification.
+		As a result, subjects that are broad or are holding a large flat object are most consistently detected.
 		
 		\begin{figure}[H]
 		\includegraphics[scale=0.15]{final3.jpg}
@@ -260,7 +265,6 @@
 		\captionof{figure}{Two-subject full system test with two stationary subjects.}
 		\label{final2}
 		\end{figure}
-
 
 		\begin{figure}[H]
 		\includegraphics[scale=0.4]{final1.PNG}

@@ -13,6 +13,7 @@
 \usepackage{listings}
 
 \usepackage{xparse}
+\usepackage{amsmath}
 
 \NewDocumentCommand{\codeword}{v}{%
 \texttt{\textcolor{blue}{#1}}%
@@ -252,8 +253,47 @@
 		Its sensor/laser assembly fails to reliably detect subjects beyond two meters from the mount. 
 		This limits the overall system as subjects must stand within two meters of the system to be properly detected.
 		Additionally, the laser experiences significant loss limiting the point aggregation necessary for proper classification.
-		As a result, subjects that are broad or are holding a large flat object are most consistently detected.
+		As a result, subjects that are broad or are holding large flat objects are more consistently detected.
 		
+		\subsection{LIDAR}
+		Due to circumstances beyond my control, I was unable to use the LEDDAR M16 solid state LIDAR for this project and was forced to use the RPLIDAR A1. 
+		The M16 LIDAR is preferred over the RPLIDAR A1 because it's a commercial grade LIDAR device that is presumably faster and more versitile than the RPLIDAR A1.
+		The RPLIDAR A1 is not an ideal LIDAR device, fortunatly, because this project is a proof of concept and not intended for commercial use, I was able to work around the RPLIDAR A1's shortcomings.
+		The RPLIDAR A1 has a very limited range, the device consistantly fails to detect objects that are more than 2 meters away.
+		Additionally, the device is fundamentally flawed because it relies on the mechanical rotation of the laser assembly. 
+		The Tensorflow computer vision model can read and classify all objects in a single video frame almost instantaniously. 
+		The RPLIDAR A1 needs to complete one full rotation before it returns a distance measurement, thus bottlenecking the entire system.
+
+
+		I developed a word-around to compensate for the slow LIDAR device by splitting the RPLIDAR A1 readings into a seperate thread that pushes data into a shared buffer.
+		This allows the Tensorflow model to poll the buffer for new distance data as it needs it.
+		However, this work around doesn't completely solve the rotational bottleneck issue. 
+		I observed the system's video output dropping to about 25 frames per second.
+
+
+		Aligning the RPLIDAR A1's laser sweep with the webcam's field of view was a challanging task.
+		Upon detecting an object, the RPLIDAR A1 returns several points of incidence consisting of distance and the object's angle with respect to the tip of the device.
+		Figure \ref{polar} illustrates the RPLIDAR A1's measurements as a polar plot.
+		The tip of the device is considered \( 0^o \), this is an important reference because it splits the usable areas into two hemispheres.
+		Through trial and error, I discovered that while in the mount, the RPLIDAR A1's usable area ranged from \( 0^o - 55^o\) and \( 0^o - 305^o\), illustrated as a green triangle in figure \ref{polar}.
+
+		\begin{figure}[H]
+		\includegraphics[scale=0.4]{polar.png}
+		\captionof{figure}{Polar illustration of the RPLIDAR A1's detection.}
+		\label{polar}
+		\end{figure}
+
+
+		One can now use this angle to transpose a point in X-Y real life dimensions into X-Z video dimensions via similar triangles geometry.
+		Let the yellow star in figure \ref{polar} represents a point of incidence that the RPLIDAR A1 detects is at angle \( \theta^o\).
+		One can now use the following equation to translate this real life point into two-dimensional space.
+
+% 		if 0 \leq  55^o:
+%		X = \frac{video width}{2} * sin(\theta) + \frac{video width}{2}
+%		else if \theta \geq 305^o:
+%		X = \frac{video width}{2} * sin(360 - \theta)
+%		\begin{align}55^o\begin{align} 
+
 		\begin{figure}[H]
 		\includegraphics[scale=0.15]{final3.jpg}
 		\captionof{figure}{Two-subject full system test. Successful classification but unsuccessful distance measurement on one subject.}

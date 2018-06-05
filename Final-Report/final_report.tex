@@ -12,7 +12,7 @@
 \usepackage{xcolor}
 \usepackage{listings}
 
-\usepackage{xparse}
+\usepackage{xparse}	
 \usepackage{amsmath}
 
 \NewDocumentCommand{\codeword}{v}{%
@@ -284,15 +284,32 @@
 		\end{figure}
 
 
-		One can now use this angle to transpose a point in X-Y real life dimensions into X-Z video dimensions via similar triangles geometry.
-		Let the yellow star in figure \ref{polar} represents a point of incidence that the RPLIDAR A1 detects is at angle \( \theta^o\).
-		One can now use the following equation to translate this real life point into two-dimensional space.
+		One can now use this angle to transpose a point in X-Y dimensions into X-Z video dimensions via similar triangles geometry.
+		Let the yellow star in figure \ref{polar} represents a point of incidence that the RPLIDAR A1 detects is at angle \( \theta\).
+		One can now use the following equations to translate this point onto the video.
 
-% 		if 0 \leq  55^o:
-%		X = \frac{video width}{2} * sin(\theta) + \frac{video width}{2}
-%		else if \theta \geq 305^o:
-%		X = \frac{video width}{2} * sin(360 - \theta)
-%		\begin{align}55^o\begin{align} 
+
+\begin{equation} \label{eq1}
+\begin{aligned}
+\theta \leq  55:
+X = \frac{video width}{2} * sin(\theta) + \frac{video width}{2}\\
+\\
+\theta \geq 305:
+X = \frac{video width}{2} * sin(360 - \theta)\\
+\end{aligned}
+\end{equation}
+
+		Adding an offset \(\frac{video width}{2}\) is necessary because the video output is mirrored as shown in figure \ref{reverse}.
+
+		\begin{figure}[H]
+		\includegraphics[scale=0.4]{reverse.png}
+		\captionof{figure}{Flipping the point over \(0^o\) so that it appears on the correct side.}
+		\label{reverse}
+		\end{figure}
+
+		Figures \ref{final3}, \ref{final2}, and \ref{final1} illustrate a live output of the completed system.
+		Points are read in from the RPLIDAR A1, plotted in a polar graph to visualize what's being detected, then the angles are translated into coordinates on the video and sent to the visualization to display the distances.
+		Occasionally the computer vision model may mis-classify objects as shown in figure \ref{final1} where the notebook I am holding is misread to be a chair.
 
 		\begin{figure}[H]
 		\includegraphics[scale=0.15]{final3.jpg}
@@ -311,6 +328,22 @@
 		\captionof{figure}{Two-subject full system test with one stationary subject and one moving subject. One misclassification.}
 		\label{final1}
 		\end{figure}
+
+	\subsection{Senior Design Expo}
+		The demo system was completed in time for senior design expo. 
+		I built a computer from some spare parts to run the demo system.
+		The computer's specs are as follows:
+		
+
+		\begin{enumerate}
+		\item Intel i5 2400
+		\item 8GB RAM DDR3 @ 2400Mhz
+		\item GTX 1080Ti FE (Borrowed from sponsor)
+		\end{enumerate}
+		
+
+		The completed system was able to run in stable, uninterrupted operation during the entire 8 hour expo without catastrophically crashing. 
+		It was also able to successfully classify a large amount of subjects and pedestrians passing by the booth.
 
 		\begin{figure}[H]
 		\includegraphics[scale=0.15]{expo1.jpg}

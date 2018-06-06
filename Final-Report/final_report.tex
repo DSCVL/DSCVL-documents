@@ -10,6 +10,7 @@
 \usepackage{float}
 
 \usepackage{xcolor}
+
 \usepackage{listings}
 
 \usepackage{xparse}	
@@ -324,54 +325,7 @@ X = \frac{video width}{2} * sin(360 - \theta)\\
 		\label{final1}
 		\end{figure}
 
-	\subsection{Installation Instructions}
-		The original Tensorflow model can be viewed here \codeword{https://goo.gl/Hkcrf3}
-		Tested, developed, and executed on Windows 10, build 1803
-
-		\subsubsection{Dependencies}
-		\begin{enumerate}
-			\item Python 3.5.2 - \codeword{https://www.python.org/downloads/release/python-352/}
-			\item I recommend installing Tensorflow-gpu to run visualization
-				\subitem \codeword{pip3 install --upgrade tensorflow-gpu}
-			\item RPlidar A1 - \codeword{https://www.slamtec.com/en/lidar/a1}
-				\subitem \codeword{pip3 install rplidar}
-			\item OpenCV 3.4.0.12
-				\subitem \codeword{pip3 install opencv-python==3.4.0.12}
-			\item CP210x USB to UART Bridge VCP Driver (If on Windows 10, build 1803, please see below)
-				\subitem \codeword{https://goo.gl/oiywRV}
-		\end{enumerate}
-
-		\subsubsection{Tensorflow-gpu}
-		If you are using Tensorflow-gpu, I used the following CUDA and CUDnn versions.
-		This project was developed and tested on an Nvidia GTX 1080, but any CUDA-enabled GPU should work too.
-		Memory issues were noted when running on a GTX 750 Ti.
-		\begin{enumerate}
-			\item Nvidia CUDA Toolkit 9.0.176
-			\item Nvidia CUDnn v7.0.4 for CUDA 9.0
-		\end{enumerate}
-
-		\subsubsection{Windows 10, build 1803 Driver Fix}
-		The CP210x USB to UART Bridge VCP Driver, required for RPlidar A1, does not meet Windows driver INF requirements and will not install.
-
-		Read more here: \codeword{https://goo.gl/5erDwL}
-
-		Instructions to enable unsigned driver installation - \codeword{https://goo.gl/EzrGUx}
-
-		My modified driver download- \codeword{https://drive.google.com/file/d/1jKxpAml_JoFPP2b4fXIjJWZ2_udghgj9/view?usp=sharing}
-
-		\subsubsection{Run Visualization}
-		\begin{enumerate}
-			\item Install all dependencies
-			\item Clone repository
-				\subitem \codeword{git clone https://github.com/DSCVL/DSCVL-Vision.git}
-			\item In file \codeword{lam_helper.py}, replace line 71 \codeword{PORT_NAME = 'COM15'} with the COM port that the RPlidar A1 is connected to.
-			\item Ensure web cam and RPlidar are plugged in, execute with the following command.
-				\subitem \codeword{python main.py}
-		\end{enumerate}
-
-	\clearpage
-
-	\section{Cumulative Retrospective}
+	\section{Weekly Blog Posts}
 		\subsection{Winter 2018}
 		\begin{longtable}{|l|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}\hline \textbf{Week} & \textbf{Positives} & \textbf{Deltas} & \textbf{Actions}\\\hline
 		1 	&
@@ -610,13 +564,89 @@ X = \frac{video width}{2} * sin(360 - \theta)\\
 	\end{center}
 	\clearpage
 
-\appendix
+\section{Conclusions and Reflections}
+	\begin{enumerate}
+    \item What technical information did you learn?
+    	\subitem I learned how to use Google Tensorflow's image recognition dataset, and I gained experience in working with a hobbyist LIDAR device.
+    \item What non-technical information did you learn?
+    	\subitem I practiced communication, work delegation, and pre-planning for unexpected events.
+    \item What have you learned about project work?
+   		\subitem I learned that project work is very demanding especially if group members are not technically skilled or equipped to accomplish their tasks.
+    \item What have you learned about project management?
+    	\subitem I learned that project management is very difficult when you neglect to select the best people for your project.
+    				Dealing with random individuals with no real work experience or motivation to excel is very challenging, and it falls to the group leader to provide motivation and enforce the importance of accountability. 
+    \item What have you learned about working in teams?
+    	\subitem I learned that working in teams that you do not select yourself is very challenging.
+    				In other group projects, I was able to work with individuals who are highly motivated and very knowledgeable.
+    				Unfortunately during this senior capstone project, I lacked a good team and consequently had to do the entire project myself.
+    \item If you could do it all over, what would you do differently?
+    	\subitem If I had to do this entire project all over with the foreknowledge of this past year, I would have not used the RPLIDAR A1 and focused entirely on getting the LEDDAR M16 to work.
+    			
+	\end{enumerate}
+
 \section*{Appendices}
 \addcontentsline{toc}{section}{Appendices}
 \renewcommand{\thesubsection}{\Alph{subsection}}
 
+\subsection{Installation Instructions}
+		The original Tensorflow model can be viewed here \codeword{https://goo.gl/Hkcrf3}
+		Tested, developed, and executed on Windows 10, build 1803
+
+		\subsubsection{Dependencies}
+		\begin{enumerate}
+			\item Python 3.5.2 - \codeword{https://www.python.org/downloads/release/python-352/}
+			\item I recommend installing Tensorflow-gpu to run visualization
+				\subitem \codeword{pip3 install --upgrade tensorflow-gpu}
+			\item RPlidar A1 - \codeword{https://www.slamtec.com/en/lidar/a1}
+				\subitem \codeword{pip3 install rplidar}
+			\item OpenCV 3.4.0.12
+				\subitem \codeword{pip3 install opencv-python==3.4.0.12}
+			\item CP210x USB to UART Bridge VCP Driver (If on Windows 10, build 1803, please see below)
+				\subitem \codeword{https://goo.gl/oiywRV}
+		\end{enumerate}
+
+		\subsubsection{Tensorflow-gpu}
+		If you are using Tensorflow-gpu, I used the following CUDA and CUDnn versions.
+		This project was developed and tested on an Nvidia GTX 1080, but any CUDA-enabled GPU should work too.
+		Memory issues were noted when running on a GTX 750 Ti.
+		\begin{enumerate}
+			\item Nvidia CUDA Toolkit 9.0.176
+			\item Nvidia CUDnn v7.0.4 for CUDA 9.0
+		\end{enumerate}
+
+		\subsubsection{Windows 10, build 1803 Driver Fix}
+		The CP210x USB to UART Bridge VCP Driver, required for RPlidar A1, does not meet Windows driver INF requirements and will not install.
+
+		Read more here: \codeword{https://goo.gl/5erDwL}
+
+		Instructions to enable unsigned driver installation - \codeword{https://goo.gl/EzrGUx}
+
+		My modified driver download- \codeword{https://drive.google.com/file/d/1jKxpAml_JoFPP2b4fXIjJWZ2_udghgj9/view?usp=sharing}
+
+		\subsubsection{Run Visualization}
+		\begin{enumerate}
+			\item Install all dependencies
+			\item Clone repository
+				\subitem \codeword{git clone https://github.com/DSCVL/DSCVL-Vision.git}
+			\item In file \codeword{lam_helper.py}, replace line 71 \codeword{PORT_NAME = 'COM15'} with the COM port that the RPlidar A1 is connected to.
+			\item Ensure web cam and RPlidar are plugged in, execute with the following command.
+				\subitem \codeword{python main.py}
+		\end{enumerate}
+
+	\clearpage
+
 \subsection{Essential Code Definitions}
-Essential code definition here
+\lstset{breaklines=true}
+\subsubsection{main.py}
+The following code consists of the main function that is executed at system start.
+
+\lstinputlisting[language=Python]{code/main.py}
+\clearpage
+
+\subsubsection{lam\_helper.py}
+The following code synchronously reads data from the RPLIDAR A1's python generator driver and stores it in a buffer to be called as needed.
+\lstinputlisting[language=Python]{code/lam_helper.py}
+\clearpage
 
 \subsection{Senior Design Expo}
 	The demo system was completed in time for senior design expo. 
@@ -641,7 +671,7 @@ Essential code definition here
 	\end{figure}
 
 	\begin{figure}[H]
-	\includegraphics[scale=0.1]{expo2.jpg}
+	\includegraphics[scale=0.07]{expo2.jpg}
 	\captionof{figure}{Senior design expo, photo by Dr.Kirsten Winters}
 	\label{expo2}
 	\end{figure}

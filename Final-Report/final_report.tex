@@ -95,14 +95,14 @@
 Essential code definition here
 \appendix
 	\section{Definitions}
-		\begin{longtable}{|l|p{0.3\linewidth}|p{0.3\linewidth}|} \\\hline 
+		\begin{longtable}{|p{0.3\linewidth}|p{0.6\linewidth}|} \hline 
 			IR & IR refers to the infrared light spectrum. \label{def:IR} \\\hline
 			IR Depth Sensor & Device that calculates distances by emitting infrared patterns. \label{def:depthsensor} \\\hline
 			LIDAR & Light Detection And Ranging - Depth sensing technology that uses lasers to measure distance. \label{def:lidar} \\\hline
 			Microsoft Kinect & A product that uses an IR Depth sensor to measure distances. \label{def:kinect} \\\hline
 			Logitech Brio Webcam & A 4k Logitech web cam. \cite{logitech} \label{def:brio} \\\hline
 			RPLidar A1 & A budget LIDAR device made by Slamtec. \cite{slamtec} \label{def:rplidar} \\\hline
-			Leddar M16 & A solid-state LIDAR device made by Leddar. \cite{leddartech} & \label{def:m16} \\\hline
+			Leddar M16 & A solid-state LIDAR device made by Leddar. \cite{leddartech} \label{def:m16} \\\hline
 			Computer Vision & The methods for acquiring, processing, analyzing, and classifying digital images and extracting information. \label{def:vision}\\\hline
 		\end{longtable}
 
@@ -182,14 +182,15 @@ Essential code definition here
 
 		A stationary mount simplifies the complexity of aligning the different dimensions measured by the LIDAR and webcam. 
 		I built a simple wooden mount for this project, joining them together at a 90-degree angle to make a stand as pictured in figure \ref{final_rplidar}.
-		Originally I built the mount to accommodate the LEDDAR M16 LIDAR, however when it became clear that it would not be ready for expo, I adapted the mount to fit the RPLIDAR A1. 
-		This was accomplished by drilling four small holes in the base of the mount to fit the RPLIDAR's plastic standoffs.
-
+		
 		\begin{figure}[H]
-			\includegraphics[scale=0.15]{mount_m16.JPG}
+			\includegraphics[scale=0.1]{mount_m16.JPG}
 			\captionof{figure}{The mount with LEDDAR M16.}
 			\label{mount_m16}
 		\end{figure}
+
+		Originally I built the mount to accommodate the LEDDAR M16 LIDAR, however when it became clear that it would not be ready for expo, I adapted the mount to fit the RPLIDAR A1. 
+		This was accomplished by drilling four small holes in the base of the mount to fit the RPLIDAR's plastic standoffs.
 
 		\begin{figure}[H]
 			\includegraphics[scale=0.1]{final_rplidar.jpg}
@@ -271,7 +272,7 @@ Essential code definition here
 		Through trial and error, I discovered that while in the mount, the RPLIDAR A1's usable area ranged from \( 0^o - 55^o\) and \( 0^o - 305^o\), illustrated as a green triangle in figure \ref{polar}.
 
 		\begin{figure}[H]
-		\includegraphics[scale=0.4]{polar.png}
+		\includegraphics[scale=0.3]{polar.png}
 		\captionof{figure}{Polar illustration of the RPLIDAR A1's detection.}
 		\label{polar}
 		\end{figure}
@@ -295,7 +296,7 @@ X = \frac{video width}{2} * sin(360 - \theta)\\
 		Adding an offset \(\frac{video width}{2}\) is necessary because the video output is mirrored as shown in figure \ref{reverse}.
 
 		\begin{figure}[H]
-		\includegraphics[scale=0.4]{reverse.png}
+		\includegraphics[scale=0.3]{reverse.png}
 		\captionof{figure}{Flipping the point over \(0^o\) so that it appears on the correct side.}
 		\label{reverse}
 		\end{figure}

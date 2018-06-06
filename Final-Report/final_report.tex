@@ -15,6 +15,8 @@
 \usepackage{xparse}	
 \usepackage{amsmath}
 
+\usepackage{rotating}
+
 \NewDocumentCommand{\codeword}{v}{%
 \texttt{\textcolor{blue}{#1}}%
 }
@@ -90,10 +92,9 @@
 
 
 \begin{singlespace}
-\appendix
-\section{Essential Code Definitions}
-Essential code definition here
-\appendix
+
+
+
 	\section{Definitions}
 		\begin{longtable}{|p{0.3\linewidth}|p{0.6\linewidth}|} \hline 
 			IR & IR refers to the infrared light spectrum. \label{def:IR} \\\hline
@@ -259,7 +260,7 @@ Essential code definition here
 		The RPLIDAR A1 needs to complete one full rotation before it returns a distance measurement, thus bottlenecking the entire system.
 
 
-		I developed a word-around to compensate for the slow LIDAR device by splitting the RPLIDAR A1 readings into a seperate thread that pushes data into a shared buffer.
+		I developed a work-around to compensate for the slow LIDAR device by splitting the RPLIDAR A1 readings into a seperate thread that pushes data into a shared buffer.
 		This allows the Tensorflow model to poll the buffer for new distance data as it needs it.
 		However, this work around doesn't completely solve the rotational bottleneck issue. 
 		I observed the system's video output dropping to about 25 frames per second.
@@ -321,34 +322,6 @@ X = \frac{video width}{2} * sin(360 - \theta)\\
 		\includegraphics[scale=0.4]{final1.PNG}
 		\captionof{figure}{Two-subject full system test with one stationary subject and one moving subject. One misclassification.}
 		\label{final1}
-		\end{figure}
-
-	\subsection{Senior Design Expo}
-		The demo system was completed in time for senior design expo. 
-		I built a computer from some spare parts to run the demo system.
-		The computer's specs are as follows:
-		
-
-		\begin{enumerate}
-		\item Intel i5 2400
-		\item 8GB RAM DDR3 @ 2400Mhz
-		\item GTX 1080Ti FE (Borrowed from sponsor)
-		\end{enumerate}
-		
-
-		The completed system was able to run in stable, uninterrupted operation during the entire 8 hour expo without catastrophically crashing. 
-		It was also able to successfully classify a large amount of subjects and pedestrians passing by the booth.
-
-		\begin{figure}[H]
-		\includegraphics[scale=0.15]{expo1.jpg}
-		\captionof{figure}{Senior design expo.}
-		\label{expo1}
-		\end{figure}
-
-		\begin{figure}[H]
-		\includegraphics[scale=0.1]{expo2.jpg}
-		\captionof{figure}{Senior design expo, photo by Dr.Kirsten Winters}
-		\label{expo2}
 		\end{figure}
 
 	\subsection{Installation Instructions}
@@ -628,5 +601,50 @@ X = \frac{video width}{2} * sin(360 - \theta)\\
 			Worked on final report
 		\\\hline
 		\end{longtable}
+
+	\clearpage
+	\section{Final Poster}
+	\vspace{3cm}
+	\begin{center}
+	\begin{turn}{90}\makebox[\textwidth]{\includegraphics[scale=0.2]{poster.PNG}}\end{turn}
+	\end{center}
+	\clearpage
+
+\appendix
+\section*{Appendices}
+\addcontentsline{toc}{section}{Appendices}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+\subsection{Essential Code Definitions}
+Essential code definition here
+
+\subsection{Senior Design Expo}
+	The demo system was completed in time for senior design expo. 
+	I built a computer from some spare parts to run the demo system.
+	The computer's specs are as follows:
+	
+
+	\begin{enumerate}
+	\item Intel i5 2400
+	\item 8GB RAM DDR3 @ 2400Mhz
+	\item GTX 1080Ti FE (Borrowed from sponsor)
+	\end{enumerate}
+	
+
+	The completed system was able to run in stable, uninterrupted operation during the entire 8 hour expo without catastrophically crashing. 
+	It was also able to successfully classify a large amount of subjects and pedestrians passing by the booth.
+
+	\begin{figure}[H]
+	\includegraphics[scale=0.15]{expo1.jpg}
+	\captionof{figure}{Senior design expo.}
+	\label{expo1}
+	\end{figure}
+
+	\begin{figure}[H]
+	\includegraphics[scale=0.1]{expo2.jpg}
+	\captionof{figure}{Senior design expo, photo by Dr.Kirsten Winters}
+	\label{expo2}
+	\end{figure}
+
 \end{singlespace}
 \end{document}
